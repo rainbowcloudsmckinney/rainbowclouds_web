@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Custom Labels — Cotton Cloud Co.</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo"><img src="./assets/images/logo.png" alt="Rainbow Clouds"></div>
+      <div>
+        <div style="font-weight:800">Rainbow Clouds</div>
+        <div class="small">Where Sweet Dreams Come True.</div>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Flavors</a>
+      <a href="label.html">Custom Labels</a>
+      <a href="catering.html">Catering</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Customize Your Cotton Candy Labels</h2>
+    <p class="small">Friendly, intuitive, and fun — create labels for parties, weddings, or showers.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
+      <div class="form-card">
+        <form id="label-form" onsubmit="event.preventDefault()">
+          <label>Event Type
+            <select id="event-type" class="label-input">
+              <option>Birthday</option>
+              <option>Baby Shower</option>
+              <option>Gender Reveal</option>
+              <option>Wedding</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>Custom Message
+            <textarea id="custom-message" class="label-input" rows="3" placeholder="e.g. Happy 5th Birthday, Ava!"></textarea>
+          </label>
+
+          <label>Preferred Colors
+            <input id="preferred-colors" class="label-input" type="text" placeholder="e.g. pastel pink & mint or linear-gradient(#ffd1dc,#ffd9a6)">
+          </label>
+
+          <label>Font Style
+            <select id="font-style" class="label-input">
+              <option value="Helvetica, Arial, sans-serif">Classic</option>
+              <option value="Georgia, serif">Elegant</option>
+              <option value="Comic Sans MS, cursive">Playful</option>
+              <option value="Brush Script MT, cursive">Script</option>
+            </select>
+          </label>
+
+          <label>Upload Logo or Image
+            <input id="logo-input" class="label-input" type="file" accept="image/*">
+          </label>
+
+          <label>Quantity Needed
+            <input id="quantity-needed" class="label-input" type="number" min="1" value="10">
+          </label>
+
+          <div style="margin-top:12px">
+            <button class="button">Request Sample</button>
+            <span class="small" style="margin-left:8px">We'll contact you with a quote.</span>
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <div style="font-weight:800">Live Preview</div>
+        <div id="label-preview" class="preview" style="margin-top:10px"></div>
+        <div class="small" style="margin-top:10px">Tip: upload a logo to see it appear in the mockup.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

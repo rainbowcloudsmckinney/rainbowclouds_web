@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catering — Cotton Cloud Co.</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo"><img src="./assets/images/logo.png" alt="Rainbow Clouds Logo"></div>
+      <div>
+        <div style="font-weight:800">Rainbow Clouds</div>
+        <div class="small">Events that taste like clouds</div>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Flavors</a>
+      <a href="label.html">Custom Labels</a>
+      <a href="catering.html">Catering</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Event Catering Inquiries</h2>
+    <p class="small">Warm, inviting, and tailored to your celebration.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:12px">
+      <div class="form-card">
+        <form id="catering-form" onsubmit="event.preventDefault(); alert('Thank you — we will reach out! (Demo form)');">
+          <label>Name
+            <input type="text" required>
+          </label>
+
+          <label>Email
+            <input type="email" required>
+          </label>
+
+          <label>Phone Number
+            <input type="text" required>
+          </label>
+
+          <label>Event Date
+            <input type="date" required>
+          </label>
+
+          <label>Event Location
+            <input type="text">
+          </label>
+
+          <label>Estimated Guest Count
+            <input type="number" min="1">
+          </label>
+
+          <label>Message or Special Requests
+            <textarea rows="3"></textarea>
+          </label>
+
+          <div style="margin-top:12px">
+            <button class="button">Send Inquiry</button>
+          </div>
+        </form>
+
+        <div style="margin-top:12px">
+          <div style="font-weight:800">Why book us?</div>
+          <ul class="small">
+            <li>Professional, timely setup</li>
+            <li>Custom labels & favor options</li>
+            <li>Trusted by local schools & venues</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-weight:800">Past Setups</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+<img src="assets/images/catering_1.svg" alt="catering 1" style="width:100%;border-radius:8px" />
+<img src="assets/images/catering_2.svg" alt="catering 2" style="width:100%;border-radius:8px" />
+<img src="assets/images/catering_3.svg" alt="catering 3" style="width:100%;border-radius:8px" />
+
+        </div>
+
+        <div style="margin-top:12px">
+          <div style="font-weight:800">Testimonials</div>
+          <div class="testimonials" style="margin-top:8px">
+            <div class="t"><strong>Sam R.</strong><div class="small">"The cotton candy station was the hit of our wedding — dreamy!"</div></div>
+            <div class="t"><strong>Lily M.</strong><div class="small">"So easy to work with. Kids loved the flavors."</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
