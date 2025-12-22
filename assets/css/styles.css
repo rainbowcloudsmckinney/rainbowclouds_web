@@ -21,45 +21,6 @@ body{
   color:#333
 }
 
-/* header{
-  padding:18px 24px; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  max-width:var(--container); 
-  margin:0 auto;
-  height: 100px;
-}
-
-.brand{
-  display:flex;
-  align-items:column;
-  justify-content: center;
-  width: 100%;
- gap:16px
-}
-.brand-text {
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-}
-
- .brand-logo {
-  height: px;
-  width: max-content;
-}
-
-.brand-logo img {
-  max-width: 100%;
-  max-height: 5em;
-  object-fit: contain;        
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 16px; 
-} */
  header {
   padding: 18px 24px;
   display: flex;
@@ -106,24 +67,6 @@ body{
   object-fit: contain;
 }
 
-/* .nav {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #311b92;
-  transition: color 0.3s ease;
-}
-
-.nav a:hover {
-  color: #ff4081;
-} */
 .nav nav {
   display: flex;
   gap: 1rem;
@@ -183,6 +126,88 @@ body{
 
 .card .body{
   padding:14px;
+}
+.cart-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.cart-button.has-items {
+  background: #ff4d6d; /* highlight when cart has items */
+}
+
+.cart-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: white;
+  color: #ff4d6d;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 50%;
+  border: 2px solid #ff4d6d;
+}
+
+.hidden {
+  display: none;
+}
+.add-to-cart {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-to-cart:hover {
+  background: #e63b5a;
+}
+.cart-controls {
+  margin-top: 10px;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.qty-controls.hidden {
+  display: none;
+}
+
+.qty-minus,
+.qty-plus {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.qty-number {
+  font-weight: 800;
+  font-size: 16px;
 }
 
 .badge{

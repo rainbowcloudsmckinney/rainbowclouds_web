@@ -9,28 +9,23 @@
 <body>
   <header>
     <div class="brand">
-        <div class="brand-text">
-          <!-- <div style="font-weight:800; font-size :2em;">Rainbow Clouds</div> -->
+      <div class="brand-logo">
+          <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo"></img>
+      </div>
+      <div class="brand-text">
           <div class="brand-title">Rainbow Clouds</div>
           <div class="small">Joy, Celebration & Sweetness</div>
-        </div>
-        <div class="brand-logo">
-          <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo"></img>
-        </div>
-        <div class="nav">
-  <nav>
-    <a href="index.html"><i class="fas fa-ice-cream"></i> Flavors</a>
-    <a href="label.html"><i class="fas fa-tag"></i> Custom Labels</a>
-    <a href="catering.html"><i class="fas fa-utensils"></i> Catering</a>
-  </nav>
-</div>
-        <!-- <div class="nav">
-          <nav>
-            <a href="index.html">Flavors</a>
+      </div>
+      <div class="nav">
+        <nav>
             <a href="label.html">Custom Labels</a>
             <a href="catering.html">Catering</a>
-          </nav>
-    </div> -->
+            <a href="cart.html" class="cart-button">
+              <img src="assets/images/sc.png" class="cart-icon" alt="Cart">
+              <span id="cart-count" class="cart-count hidden">0</span>
+            </a>
+        </nav>
+      </div>
   </header>
 
   <div class="container">
@@ -53,7 +48,15 @@
             <div style="font-weight:800">Strawberry</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">this pink cloud delivers classic strawberry flavor in every melt-in-your-mouth bite.</div>
+          <div class="small" style="margin-top:8px">A Pink Berry Cloud captures the light, sweet essence of sun-ripened, field-fresh strawberries in every fluffy bite.</div>
+         <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -64,7 +67,15 @@
             <div style="font-weight:800">Banana</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Tropical Cream Cloud offers a smooth, sweet, and comforting flavor reminiscent of a classic banana cream pie.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -75,7 +86,15 @@
             <div style="font-weight:800">Grape</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Purple Cloud that delivers a rich, vineyard-inspired burst of classic, nostalgic grape goodness.</div>
+             <div class="cart-controls">
+                <button class="add-to-cart" data-price="3">Add to Cart</button>
+                <div class="qty-controls hidden">
+                  <button class="qty-minus">−</button>
+                  <span class="qty-number">1</span>
+                  <button class="qty-plus">+</button>
+                </div>
+              </div>
         </div>
       </div>
 
@@ -86,7 +105,15 @@
             <div style="font-weight:800">Passion Fruit</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Exotic Zest Cloud provides an exciting, tangy-sweet sensation with a vibrant tropical kick that’s surprisingly refreshing.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -97,7 +124,15 @@
             <div style="font-weight:800">Blue Raspberry</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Electric Azure Cloud strikes a perfect balance between sweet and tangy with its signature playful sour twist.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -108,7 +143,15 @@
             <div style="font-weight:800">Watermelon</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Summer Refresh Cloud tastes like biting into a ripe, juicy slice of cold watermelon on a sunny day.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -119,7 +162,15 @@
             <div style="font-weight:800">Cherry Lime</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Zesty Fusion Cloud blends the sweet brightness of cherry with a sharp, invigorating tang of fresh lime.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -130,7 +181,15 @@
             <div style="font-weight:800">Cherry</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Bold Crimson Cloud offers a timeless, deep red flavor that delivers a strong and satisfying cherry punch.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -141,7 +200,15 @@
             <div style="font-weight:800">Orange</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Golden Sunrise Cloud is a cheerful, citrusy treat that feels like a burst of sunshine and fresh-squeezed juice.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -152,7 +219,15 @@
             <div style="font-weight:800">Green Apple</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Crisp Emerald Cloud features a sharp, sweet-and-sour profile that provides a zesty, refreshing finish.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -163,7 +238,15 @@
             <div style="font-weight:800">Bubble Gum</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Playful Pink Cloud spins all the fun and nostalgia of classic bubblegum into an airy, melt-in-your-mouth treat.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -174,7 +257,15 @@
             <div style="font-weight:800">Pink Vanilla</div>
             <div style="font-weight:800;color:#ff4d6d">$3</div>
           </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+          <div class="small" style="margin-top:8px">A Classic Original Cloud is the ultimate in comfort—creamy, smooth, and universally loved for its timeless sweetness.</div>
+           <div class="cart-controls">
+            <button class="add-to-cart" data-price="3">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
+          </div>
         </div>
       </div>
 
