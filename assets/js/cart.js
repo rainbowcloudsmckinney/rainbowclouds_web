@@ -15,31 +15,36 @@ function renderCart() {
   let total = 0;
 
   cart.forEach((item, index) => {
-    total += item.price * item.qty;
+    const itemTotal = item.price * item.qty;
+    total += itemTotal;
 
-    const div = document.createElement("div");
-    div.classList.add("cart-item");
+    const row = document.createElement("div");
+    row.classList.add("cart-row");
 
-    div.innerHTML = `
-      <div class="cart-row">
-        <div class="cart-name">${item.name}</div>
+    row.innerHTML = `
+      <button class="remove-btn" data-index="${index}">×</button>
 
-        <div class="cart-controls">
-          <button class="qty-btn" data-index="${index}" data-action="minus">−</button>
-          <span class="qty">${item.qty}</span>
-          <button class="qty-btn" data-index="${index}" data-action="plus">+</button>
-        </div>
-
-        <div class="cart-price">$${item.price * item.qty}</div>
-
-        <button class="remove-btn" data-index="${index}">Remove</button>
+      <div class="cart-cell image">
+        <img src="${item.img}" class="cart-img" alt="${item.name}">
       </div>
+
+      <div class="cart-cell name">${item.name}</div>
+
+      <div class="cart-cell price">$${item.price.toFixed(2)}</div>
+
+      <div class="cart-cell qty">
+        <button class="qty-btn" data-index="${index}" data-action="minus">−</button>
+        <span class="qty-number">${item.qty}</span>
+        <button class="qty-btn" data-index="${index}" data-action="plus">+</button>
+      </div>
+
+      <div class="cart-cell subtotal">$${itemTotal.toFixed(2)}</div>
     `;
 
-    cartContainer.appendChild(div);
+    cartContainer.appendChild(row);
   });
 
-  totalContainer.innerHTML = `<h2>Total: $${total}</h2>`;
+  totalContainer.innerHTML = `<h2>Total: $${total.toFixed(2)}</h2>`;
 }
 
 document.addEventListener("click", (e) => {
@@ -48,7 +53,11 @@ document.addEventListener("click", (e) => {
     const action = e.target.dataset.action;
 
     if (action === "plus") cart[index].qty++;
-    if (action === "minus" && cart[index].qty > 1) cart[index].qty--;
+    if (action === "minus") cart[index].qty--;
+
+    if (cart[index].qty <= 0) {
+      cart.splice(index, 1);
+    }
 
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();

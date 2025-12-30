@@ -300,4 +300,387 @@ input[type="text"], input[type="email"], input[type="date"], input[type="number"
   .hero{flex-direction:column;align-items:flex-start}
 }
 
+/* ------------------------------
+   CART PAGE STYLES
+------------------------------ */
 
+.cart-list {
+  margin-top: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.cart-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cart-details {
+  flex: 1;
+}
+
+.cart-name {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.cart-price {
+  color: #ff4d6d;
+  font-weight: 700;
+  margin: 6px 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.qty-btn {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.qty-btn:hover {
+  background: #e63b5a;
+}
+
+.qty-number {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  color: #ff4d6d;
+}
+
+.cart-total {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.checkout-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background: #e63b5a;
+}
+.cart-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.remove-btn:hover {
+  color: #ff4d6d;
+}
+/* TABLE STYLE CART LAYOUT */
+.cart-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* IMAGE */
+.cart-img-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* RIGHT SIDE INFO */
+.cart-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+/* REMOVE BUTTON TOP RIGHT */
+.cart-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  color: #ff4d6d;
+}
+
+/* NAME */
+.cart-name {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+/* PRICE */
+.cart-price {
+  font-size: 15px;
+  color: #444;
+}
+
+/* QTY CONTROLS */
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-btn {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.qty-number {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* SUBTOTAL */
+.cart-subtotal {
+  font-weight: 700;
+  font-size: 16px;
+  color: #222;
+}
+
+/* TOTAL AT BOTTOM */
+.cart-total {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: right;
+}
+.cart-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px 140px 120px;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Remove button in top-right */
+.remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  color: #ff4d6d;
+}
+
+/* Image */
+.cart-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Name */
+.cart-cell.name {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+/* Price */
+.cart-cell.price {
+  font-size: 16px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Quantity controls */
+.cart-cell.qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-btn {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.qty-number {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Subtotal */
+.cart-cell.subtotal {
+  font-weight: 700;
+  font-size: 16px;
+  color: #222;
+}
+
+/* Total at bottom */
+.cart-total {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: right;
+}
+
+/* --------------------------------------------------
+   CATERING PAGE
+-------------------------------------------------- */
+
+.catering-page h2 {
+  margin-bottom: 4px;
+}
+
+.catering-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+/* Form */
+.catering-form label {
+  margin-top: 12px;
+}
+
+.catering-submit {
+  margin-top: 16px;
+  width: 100%;
+}
+
+/* Why Book Us */
+.catering-why {
+  margin-top: 16px;
+}
+
+.why-title {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+/* Right Side */
+.catering-side .side-title {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+/* Gallery */
+.catering-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.gallery-img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Testimonials */
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .catering-grid {
+    grid-template-columns: 1fr;
+  }
+}

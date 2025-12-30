@@ -123,8 +123,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       addBtn.classList.add("hidden");
       qtyBox.classList.remove("hidden");
-
-      cart.push({ name, price, qty: 1 });
+const img = card.querySelector("img").src;
+cart.push({ name, price, qty: 1, img });
+      // cart.push({ name, price, qty: 1 });
       qtyNum.textContent = 1;
 
       localStorage.setItem("cart", JSON.stringify(cart));
