@@ -7,27 +7,54 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <header>
-    <div class="brand">
+ <header>
+  <div class="header-inner">
+
+    <!-- Left: Logo + Brand -->
+    <div class="brand-group">
       <div class="brand-logo">
-          <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo"></img>
+        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
       </div>
       <div class="brand-text">
-          <div class="brand-title">Rainbow Clouds</div>
-          <div class="small">Joy, Celebration & Sweetness</div>
+        <div class="brand-title">Rainbow Clouds</div>
+        <div class="small">Joy, Celebration & Sweetness</div>
       </div>
-      <div class="nav">
-        <nav>
-            <a href="label.html">Custom Labels</a>
-            <a href="catering.html">Catering</a>
-            <a href="cart.html" class="cart-button">
-              <img src="assets/images/sc.png" class="cart-icon" alt="Cart">
-              <span id="cart-count" class="cart-count hidden">0</span>
-            </a>
-        </nav>
-      </div>
-  </header>
+    </div>
 
+    <!-- Right: Navigation -->
+    <nav class="nav">
+      <a href="index.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+          <div class="nav-image-label">Flavors</div>
+        </div>
+      </a>
+
+      <a href="label.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
+          <div class="nav-image-label">Labels</div>
+        </div>
+      </a>
+
+      <a href="catering.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+          <div class="nav-image-label">Catering</div>
+        </div>
+      </a>
+
+      <a href="cart.html" class="nav-image-button">
+        <div class="nav-image-wrapper cart-wrapper">
+          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+          <div class="nav-image-label">Cart</div>
+          <span id="cart-count" class="cart-count hidden">0</span>
+        </div>
+      </a>
+    </nav>
+
+  </div>
+</header>
   <div class="container">
     <div class="hero">
       <div style="flex:1">

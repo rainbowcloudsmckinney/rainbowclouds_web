@@ -20,80 +20,145 @@ body{
   background:linear-gradient(180deg,var(--pastel2),var(--pastel1));
   color:#333
 }
-
- header {
-  padding: 18px 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: var(--container);
-  margin: 0 auto;
-  height: 100px;
+/* Header wrapper */
+header {
+  width: 100%;
+  padding: 16px 0;
+  
 }
 
-.brand {
+.header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.brand-text {
-  flex: 1;
+/* Left side: logo + brand text */
+.brand-group {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
-}
-
-.brand-title {
-  font-weight: 800;
-  font-size: 2em;
-}
-
-.small {
-  font-size: 1em;
-  color: #6a1b9a;
-}
-
-.brand-logo {
-  width: max-content;
+  align-items: center;
+  gap: 12px;
 }
 
 .brand-logo img {
-  max-width: 100%;
-  max-height: 6em;
+  height: 100px;
+  width: auto;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #311b92;
+}
+
+.brand-text .small {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Right side: nav buttons */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Nav container */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* -----------------------------------
+   NAV IMAGE BUTTONS
+----------------------------------- */
+.nav-image-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #f3e5f5; /* pastel default */
+  transition: background 0.2s ease;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.nav-image-button:hover {
+  background: #ff4081;
+}
+
+/* Wrapper for icon + label */
+.nav-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative; /* needed for cart badge */
+}
+
+/* Icon */
+.nav-image-icon {
+  height: 28px;
+  width: auto;
   object-fit: contain;
 }
 
-.nav nav {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;              /* space between icon and text */
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  background: #f3e5f5;      /* soft pastel background */
-  color: #311b92;
+/* Label */
+.nav-image-label {
+  font-size: 13px;
   font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  color: #311b92;
 }
 
-.nav a:hover {
-  background: #ff4081;      /* playful hover color */
-  color: #fff;
+/* -----------------------------------
+   CART BADGE
+----------------------------------- */
+.cart-wrapper {
+  position: relative;
 }
 
-.nav i {
-  font-size: 1.1em;
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: white;
+  color: #ff4d6d;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 50%;
+  border: 2px solid #ff4d6d;
+  z-index: 9999;
 }
 
+.hidden {
+  display: none !important;
+}
+
+/* -----------------------------------
+   CART BUTTON WHEN IT HAS ITEMS
+----------------------------------- */
+.nav-image-button.has-items {
+  background: #ff4d6d !important;
+}
+
+.nav-image-button.has-items .nav-image-label {
+  color: white !important;
+}
+
+.nav-image-button.has-items .nav-image-icon {
+  filter: brightness(0) invert(1); /* makes icon white */
+}
 .container{
   max-width:var(--container);
   margin:24px auto;
@@ -178,15 +243,11 @@ body{
 .add-to-cart:hover {
   background: #e63b5a;
 }
-.cart-controls {
-  margin-top: 10px;
-}
-
 .qty-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* three equal columns */
   gap: 10px;
+  margin-top: 10px;
 }
 
 .qty-controls.hidden {
@@ -198,18 +259,25 @@ body{
   background: #ff4d6d;
   color: white;
   border: none;
-  padding: 6px 12px;
+  padding: 10px 0;
   border-radius: 6px;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+  width: 100%; /* full width of each grid cell */
 }
 
 .qty-number {
   font-weight: 800;
   font-size: 16px;
+  background: #fff;
+  color: #ff4d6d;
+  border: 2px solid #ff4d6d;
+  border-radius: 6px;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
 }
-
 .badge{
   display:inline-block;
   background:linear-gradient(90deg,#ffd1dc,#ffd9a6);

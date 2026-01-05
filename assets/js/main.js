@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const count = cart.reduce((sum, item) => sum + item.qty, 0);
 
     const badge = document.getElementById("cart-count");
-    const button = document.querySelector(".cart-button");
+    const button = document.querySelector("a[href='cart.html']");
 
     if (!badge || !button) return;
 

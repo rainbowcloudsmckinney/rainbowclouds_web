@@ -8,19 +8,53 @@
 </head>
 <body>
   <header>
-    <div class="brand">
-      <div class="logo"><img src="./assets/images/logo.png" alt="Rainbow Clouds"></div>
-      <div>
-        <div style="font-weight:800">Rainbow Clouds</div>
-        <div class="small">Where Sweet Dreams Come True.</div>
+  <div class="header-inner">
+
+    <!-- Left: Logo + Brand -->
+    <div class="brand-group">
+      <div class="brand-logo">
+        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">Rainbow Clouds</div>
+        <div class="small">Joy, Celebration & Sweetness</div>
       </div>
     </div>
-    <nav>
-      <a href="index.html">Flavors</a>
-      <a href="label.html">Custom Labels</a>
-      <a href="catering.html">Catering</a>
+
+    <!-- Right: Navigation -->
+    <nav class="nav">
+      <a href="index.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+          <div class="nav-image-label">Flavors</div>
+        </div>
+      </a>
+
+      <a href="label.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
+          <div class="nav-image-label">Labels</div>
+        </div>
+      </a>
+
+      <a href="catering.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+          <div class="nav-image-label">Catering</div>
+        </div>
+      </a>
+
+      <a href="cart.html" class="nav-image-button">
+        <div class="nav-image-wrapper cart-wrapper">
+          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+          <div class="nav-image-label">Cart</div>
+          <span id="cart-count" class="cart-count hidden">0</span>
+        </div>
+      </a>
     </nav>
-  </header>
+
+  </div>
+</header>
 
   <div class="container">
     <h2>Customize Your Cotton Candy Labels</h2>
@@ -65,7 +99,7 @@
           </label>
 
           <div style="margin-top:12px">
-            <button class="button">Request Sample</button>
+            <button type="submit" class="button">Request Sample</button>
             <span class="small" style="margin-left:8px">We'll contact you with a quote.</span>
           </div>
         </form>
