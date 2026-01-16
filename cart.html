@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Cart - Rainbow Clouds</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand-group">
+      <div class="brand-logo">
+        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">Rainbow Clouds</div>
+        <div class="small">Joy, Celebration & Sweetness</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+          <div class="nav-image-label">Flavors</div>
+        </div>
+      </a>
+
+      <a href="label.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
+          <div class="nav-image-label">Labels</div>
+        </div>
+      </a>
+
+      <a href="catering.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+          <div class="nav-image-label">Catering</div>
+        </div>
+      </a>
+
+      <a href="cart.html" class="nav-image-button">
+        <div class="nav-image-wrapper cart-wrapper">
+          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+          <div class="nav-image-label">Cart</div>
+          <span id="cart-count" class="cart-count hidden">0</span>
+        </div>
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container">
+  <h1>Your Cart</h1>
+  <p class="small">Review your sweet selections</p>
+
+  <!-- Cart Items Render Here -->
+  <div id="cart-items" class="cart-list"></div>
+
+  <div id="cart-total" class="cart-total"></div>
+
+  <button id="checkout-btn" class="checkout-btn">Checkout</button>
+</div>
+
+<div class="footer">
+  <div class="small">Rainbow Clouds - Where Sweet Dreams Come True.</div>
+</div>
+
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

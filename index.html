@@ -2,189 +2,322 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rainbow Clouds</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
-  <header>
-    <div class="brand">
-        <div class="brand-text">
-          <!-- <div style="font-weight:800; font-size :2em;">Rainbow Clouds</div> -->
-          <div class="brand-title">Rainbow Clouds</div>
-          <div class="small">Joy, Celebration & Sweetness</div>
-        </div>
-        <div class="brand-logo">
-          <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo"></img>
-        </div>
-        <div class="nav">
-  <nav>
-    <a href="index.html"><i class="fas fa-ice-cream"></i> Flavors</a>
-    <a href="label.html"><i class="fas fa-tag"></i> Custom Labels</a>
-    <a href="catering.html"><i class="fas fa-utensils"></i> Catering</a>
-  </nav>
-</div>
-        <!-- <div class="nav">
-          <nav>
-            <a href="index.html">Flavors</a>
-            <a href="label.html">Custom Labels</a>
-            <a href="catering.html">Catering</a>
-          </nav>
-    </div> -->
-  </header>
 
-  <div class="container">
-    <div class="hero">
-      <div style="flex:1">
-        <h1 style="margin:0">Flavor Gallery</h1>
-        <p class="small">Bright, colorful, and whimsical — pick your cloud!</p>
+<header>
+  <div class="header-inner">
+    <div class="brand-group">
+      <div class="brand-logo">
+        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
       </div>
-      <div style="text-align:right">
-        <span class="badge">All flavors $3</span>
+      <div class="brand-text">
+        <div class="brand-title">Rainbow Clouds</div>
+        <div class="small">Joy, Celebration & Sweetness</div>
       </div>
     </div>
 
-    <div class="grid">
-
-      <div class="card" data-name="Strawberry">
-        <img src="./assets/images/NewStrawberry.png" alt="Strawberry cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Strawberry</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">this pink cloud delivers classic strawberry flavor in every melt-in-your-mouth bite.</div>
+    <nav class="nav">
+      <a href="index.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+          <div class="nav-image-label">Flavors</div>
         </div>
-      </div>
+      </a>
 
-      <div class="card" data-name="Banana">
-        <img src="assets/images/NewBanana.png" alt="Banana cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Banana</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+      <a href="label.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
+          <div class="nav-image-label">Labels</div>
         </div>
-      </div>
+      </a>
 
-      <div class="card" data-name="Grape">
-        <img src="assets/images/NewGrape.png" alt="Grape cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Grape</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+      <a href="catering.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+          <div class="nav-image-label">Catering</div>
         </div>
-      </div>
+      </a>
 
-      <div class="card" data-name="Passion Fruit">
-        <img src="assets/images/NewPassionfruit.png" alt="Passion Fruit cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Passion Fruit</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
+      <a href="cart.html" class="nav-image-button">
+        <div class="nav-image-wrapper cart-wrapper">
+          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+          <div class="nav-image-label">Cart</div>
+          <span id="cart-count" class="cart-count hidden">0</span>
         </div>
-      </div>
+      </a>
+    </nav>
+  </div>
+</header>
 
-      <div class="card" data-name="Blue Raspberry">
-        <img src="assets/images/NewBlueRaspberry.png" alt="Blue Raspberry cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Blue Raspberry</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
-        </div>
-      </div>
+<main class="container">
 
-      <div class="card" data-name="Watermelon">
-        <img src="assets/images/NewWatermelon.png" alt="Watermelon cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Watermelon</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
-        </div>
-      </div>
-
-      <div class="card" data-name="Cherry Lime">
-        <img src="assets/images/NewCherryLime.png" alt="Cherry Lime cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Cherry Lime</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
-        </div>
-      </div>
-
-      <div class="card" data-name="Cherry">
-        <img src="assets/images/NewCherry.png" alt="Cherry cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Cherry</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
-        </div>
-      </div>
-
-      <div class="card" data-name="Orange">
-        <img src="assets/images/NewOrange.png" alt="Orange cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Orange</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
-        </div>
-      </div>
-
-      <div class="card" data-name="Green Apple">
-        <img src="assets/images/NewGreenApple.png" alt="Green Apple cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Green Apple</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
-        </div>
-      </div>
-
-      <div class="card" data-name="Bubble Gum">
-        <img src="assets/images/NewBubblegum.png" alt="Bubble Gum cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Bubble Gum</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
-        </div>
-      </div>
-
-      <div class="card" data-name="Pink Vanilla">
-        <img src="assets/images/NewPinkVanilla.png" alt="Pink Vanilla cotton candy">
-        <div class="body">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Pink Vanilla</div>
-            <div style="font-weight:800;color:#ff4d6d">$3</div>
-          </div>
-          <div class="small" style="margin-top:8px">Whimsical cloud of sweetness</div>
-        </div>
-      </div>
-
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Flavor Gallery</h1>
+      <p class="small">Bright, colorful, and whimsical — pick your cloud!</p>
     </div>
-  </div>
+    <div class="hero-right">
+      <span class="badge">All flavors $3</span>
+    </div>
+  </section>
 
-  <div class="footer">
-    <div class="small">Rainbow Clouds - Where Sweet Dreams Come True.</div>
-  </div>
+  <!-- Product Grid -->
+  <section class="grid">
 
-  <script src="assets/js/main.js"></script>
+    <!-- Strawberry -->
+    <div class="card" data-name="Strawberry">
+      <img src="assets/images/NewStrawberry.png" alt="Strawberry cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Strawberry</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">A Pink Berry Cloud captures the light, sweet essence of sun-ripened strawberries.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banana -->
+    <div class="card" data-name="Banana">
+      <img src="assets/images/NewBanana.png" alt="Banana cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Banana</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">A Tropical Cream Cloud with smooth, sweet banana flavor.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grape -->
+    <div class="card" data-name="Grape">
+      <img src="assets/images/NewGrape.png" alt="Grape cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Grape</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">A Purple Cloud bursting with nostalgic grape goodness.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Passion Fruit -->
+    <div class="card" data-name="Passion Fruit">
+      <img src="assets/images/NewPassionfruit.png" alt="Passion Fruit cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Passion Fruit</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Tangy-sweet tropical flavor with a refreshing kick.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blue Raspberry -->
+    <div class="card" data-name="Blue Raspberry">
+      <img src="assets/images/NewBlueRaspberry.png" alt="Blue Raspberry cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Blue Raspberry</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Sweet and tangy with a playful sour twist.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Watermelon -->
+    <div class="card" data-name="Watermelon">
+      <img src="assets/images/NewWatermelon.png" alt="Watermelon cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Watermelon</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Juicy, refreshing summer watermelon flavor.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cherry Lime -->
+    <div class="card" data-name="Cherry Lime">
+      <img src="assets/images/NewCherryLime.png" alt="Cherry Lime cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Cherry Lime</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Sweet cherry blended with zesty lime.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cherry -->
+    <div class="card" data-name="Cherry">
+      <img src="assets/images/NewCherry.png" alt="Cherry cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Cherry</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Bold, classic cherry flavor.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orange -->
+    <div class="card" data-name="Orange">
+      <img src="assets/images/NewOrange.png" alt="Orange cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Orange</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Bright citrus burst of sunshine.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Green Apple -->
+    <div class="card" data-name="Green Apple">
+      <img src="assets/images/NewGreenApple.png" alt="Green Apple cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Green Apple</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Crisp and tart apple zing.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bubble Gum -->
+    <div class="card" data-name="Bubble Gum">
+      <img src="assets/images/NewBubblegum.png" alt="Bubble Gum cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Bubble Gum</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Classic bubblegum fun and nostalgia.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pink Vanilla -->
+    <div class="card" data-name="Pink Vanilla">
+      <img src="assets/images/NewPinkVanilla.png" alt="Pink Vanilla cotton candy">
+      <div class="body">
+        <div class="card-header">
+          <span class="card-title">Pink Vanilla</span>
+          <span class="card-price">$3</span>
+        </div>
+        <p class="small">Smooth, creamy, timeless vanilla sweetness.</p>
+        <div class="cart-controls">
+          <button class="add-to-cart" data-price="3">Add to Cart</button>
+          <div class="qty-controls hidden">
+            <button class="qty-minus">−</button>
+            <span class="qty-number">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="small">Rainbow Clouds - Where Sweet Dreams Come True.</div>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>

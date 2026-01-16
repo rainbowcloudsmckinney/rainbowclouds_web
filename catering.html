@@ -8,19 +8,49 @@
 </head>
 <body>
   <header>
-    <div class="brand">
-      <div class="logo"><img src="./assets/images/logo.png" alt="Rainbow Clouds Logo"></div>
-      <div>
-        <div style="font-weight:800">Rainbow Clouds</div>
-        <div class="small">Events that taste like clouds</div>
+  <div class="header-inner">
+    <div class="brand-group">
+      <div class="brand-logo">
+        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">Rainbow Clouds</div>
+        <div class="small">Joy, Celebration & Sweetness</div>
       </div>
     </div>
-    <nav>
-      <a href="index.html">Flavors</a>
-      <a href="label.html">Custom Labels</a>
-      <a href="catering.html">Catering</a>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+          <div class="nav-image-label">Flavors</div>
+        </div>
+      </a>
+
+      <a href="label.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
+          <div class="nav-image-label">Labels</div>
+        </div>
+      </a>
+
+      <a href="catering.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+          <div class="nav-image-label">Catering</div>
+        </div>
+      </a>
+
+      <a href="cart.html" class="nav-image-button">
+        <div class="nav-image-wrapper cart-wrapper">
+          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+          <div class="nav-image-label">Cart</div>
+          <span id="cart-count" class="cart-count hidden">0</span>
+        </div>
+      </a>
     </nav>
-  </header>
+  </div>
+</header>
 
   <div class="container">
     <h2>Event Catering Inquiries</h2>
@@ -28,39 +58,56 @@
 
     <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:12px">
       <div class="form-card">
-        <form id="catering-form" onsubmit="event.preventDefault(); alert('Thank you — we will reach out! (Demo form)');">
+          <form id="catering-form">
+
+          <!-- Web3Forms required -->
+          <input type="hidden" name="access_key" value="94be8133-edc7-45d9-9dd6-8f56c93c6a3d">
+
+          <!-- Optional: email subject + sender name -->
+          <input type="hidden" name="subject" value="New Catering Inquiry - Rainbow Clouds">
+          <input type="hidden" name="from_name" value="Rainbow Clouds Website">
+          <input type="hidden" name="replyto" value="%email%">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+
+
+
           <label>Name
-            <input type="text" required>
+            <input type="text" name="name" required>
           </label>
 
           <label>Email
-            <input type="email" required>
+            <input type="email" name="email" required>
           </label>
 
           <label>Phone Number
-            <input type="text" required>
+            <input type="text" name="phone" required>
           </label>
 
           <label>Event Date
-            <input type="date" required>
+            <input type="date" name="event_date" required>
           </label>
 
           <label>Event Location
-            <input type="text">
+            <input type="text" name="event_location">
           </label>
 
           <label>Estimated Guest Count
-            <input type="number" min="1">
+            <input type="number" name="guest_count" min="1">
           </label>
 
           <label>Message or Special Requests
-            <textarea rows="3"></textarea>
+            <textarea name="message" rows="3"></textarea>
           </label>
 
           <div style="margin-top:12px">
-            <button class="button">Send Inquiry</button>
+            <button type="submit" class="button" id="catering-submit">Send Inquiry</button>
           </div>
+
         </form>
+
+        <!-- Status message (recommended) -->
+        <p id="form-status" class="small" style="margin-top:10px"></p>
+
 
         <div style="margin-top:12px">
           <div style="font-weight:800">Why book us?</div>
