@@ -238,7 +238,155 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   renderCart();
-    // ---------------------------------
+
+  // ---------------------------------
+  // SHIPPING CALCULATION
+  // ---------------------------------
+  const SHIPPING_RATES = {
+    // Local - Texas
+    TX: 5,
+    // South
+    LA: 8, OK: 8, AR: 8, NM: 8, MS: 8,
+    // Central
+    CO: 10, KS: 10, MO: 10, NE: 10, IA: 10, MN: 10, WI: 10,
+    IL: 10, IN: 10, OH: 10, MI: 10, TN: 10, KY: 10, AL: 10,
+    // East/West Coasts
+    CA: 12, WA: 12, OR: 12, AZ: 12, NV: 12, UT: 12,
+    NY: 12, PA: 12, NJ: 12, MA: 12, CT: 12, FL: 12,
+    GA: 12, NC: 12, SC: 12, VA: 12, MD: 12,
+    // Remote
+    AK: 18, HI: 18
+  };
+
+  // Default for unlisted states
+  const DEFAULT_SHIPPING = 12;
+
+  function getShippingRate(state) {
+    return SHIPPING_RATES[state] || DEFAULT_SHIPPING;
+  }
+
+  function updateTotals() {
+    const cart = getCart();
+    const shippingSection = document.getElementById("shipping-section");
+    const stateSelect = document.getElementById("shipping-state");
+    const subtotalDisplay = document.getElementById("subtotal-display");
+    const shippingDisplay = document.getElementById("shipping-display");
+    const grandTotalDisplay = document.getElementById("grand-total-display");
+    const checkoutBtn = document.getElementById("checkout-btn");
+
+    if (!shippingSection) return;
+
+    if (cart.length === 0) {
+      shippingSection.style.display = "none";
+      if (checkoutBtn) checkoutBtn.style.display = "none";
+      return;
+    }
+
+    shippingSection.style.display = "block";
+    if (checkoutBtn) checkoutBtn.style.display = "block";
+
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const selectedState = stateSelect?.value || "";
+    const shipping = selectedState ? getShippingRate(selectedState) : 0;
+    const grandTotal = subtotal + shipping;
+
+    if (subtotalDisplay) subtotalDisplay.textContent = `$${subtotal.toFixed(2)}`;
+    if (shippingDisplay) shippingDisplay.textContent = selectedState ? `$${shipping.toFixed(2)}` : "Select state";
+    if (grandTotalDisplay) grandTotalDisplay.textContent = selectedState ? `$${grandTotal.toFixed(2)}` : `$${subtotal.toFixed(2)}`;
+  }
+
+  // Listen for state changes
+  const shippingStateSelect = document.getElementById("shipping-state");
+  if (shippingStateSelect) {
+    shippingStateSelect.addEventListener("change", updateTotals);
+  }
+
+  // Initial totals update
+  updateTotals();
+
+  // ---------------------------------
+  // STRIPE CHECKOUT (via Serverless API)
+  // ---------------------------------
+  // API endpoint - works locally with vercel dev, or deployed on Vercel
+  const API_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:3000/api/create-checkout'
+    : '/api/create-checkout';
+
+  const checkoutBtn = document.getElementById("checkout-btn");
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", async () => {
+      const cart = getCart();
+      const stateSelect = document.getElementById("shipping-state");
+      const selectedState = stateSelect?.value;
+
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      if (!selectedState) {
+        alert("Please select your state for shipping.");
+        stateSelect?.focus();
+        return;
+      }
+
+      // Show loading state
+      const originalText = checkoutBtn.textContent;
+      checkoutBtn.textContent = "Processing...";
+      checkoutBtn.disabled = true;
+
+      try {
+        // Call the secure serverless function
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            items: cart.map(item => ({
+              name: item.name,
+              price: item.price,
+              qty: item.qty
+            })),
+            state: selectedState,
+            successUrl: `${window.location.origin}/success.html`,
+            cancelUrl: `${window.location.origin}/cancel.html`
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to create checkout');
+        }
+
+        // Redirect to Stripe Checkout
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error('No checkout URL received');
+        }
+
+      } catch (error) {
+        console.error('Checkout error:', error);
+        alert(`Checkout error: ${error.message}\n\nMake sure the API is running (vercel dev) and STRIPE_SECRET_KEY is set.`);
+        checkoutBtn.textContent = originalText;
+        checkoutBtn.disabled = false;
+      }
+    });
+  }
+
+  // Override renderCart to also update totals
+  const originalRenderCart = renderCart;
+  if (typeof renderCart === 'function') {
+    // Re-attach event to update totals after cart changes
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("qty-btn") || e.target.classList.contains("remove-btn")) {
+        setTimeout(updateTotals, 100);
+      }
+    });
+  }
+  // ---------------------------------
   // CATERING FORM (GOOGLE APPS SCRIPT)
   // ---------------------------------
   const cateringForm = document.getElementById("catering-form");
