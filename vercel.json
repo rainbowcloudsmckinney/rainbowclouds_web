@@ -1,7 +1,10 @@
 {
-    "buildCommand": "echo 'No build needed - static site'",
-    "outputDirectory": ".",
+    "cleanUrls": true,
     "rewrites": [
+        {
+            "source": "/",
+            "destination": "/index.html"
+        },
         {
             "source": "/api/(.*)",
             "destination": "/api/$1"
