@@ -23,9 +23,12 @@ const SHIPPING_RATES = {
 const DEFAULT_SHIPPING = 12;
 
 module.exports = async (req, res) => {
+    // Get allowed origin from environment variable (defaults to * for development)
+    const allowedOrigin = process.env.ALLOWED_ORIGIN || '*';
+
     // Handle CORS preflight
     if (req.method === 'OPTIONS') {
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
         res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         return res.status(200).end();
@@ -113,7 +116,7 @@ module.exports = async (req, res) => {
         });
 
         // Return the checkout URL
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
         return res.status(200).json({
             url: session.url,
             sessionId: session.id
@@ -122,7 +125,7 @@ module.exports = async (req, res) => {
     } catch (error) {
         // Log detailed error server-side for debugging
         console.error('Stripe checkout error:', error);
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
 
         // Return generic error to client (don't leak internal details)
         return res.status(500).json({

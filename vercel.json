@@ -7,20 +7,8 @@
     ],
     "headers": [
         {
-            "source": "/api/(.*)",
+            "source": "/(.*)",
             "headers": [
-                {
-                    "key": "Access-Control-Allow-Origin",
-                    "value": "*"
-                },
-                {
-                    "key": "Access-Control-Allow-Methods",
-                    "value": "POST, OPTIONS"
-                },
-                {
-                    "key": "Access-Control-Allow-Headers",
-                    "value": "Content-Type"
-                },
                 {
                     "key": "Content-Security-Policy",
                     "value": "default-src 'self'; script-src 'self' https://js.stripe.com https://script.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.stripe.com https://script.google.com; frame-src https://js.stripe.com"
