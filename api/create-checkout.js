@@ -1,5 +1,10 @@
 const Stripe = require('stripe');
 
+// Validate required environment variables
+if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY environment variable is required');
+}
+
 // Initialize Stripe with secret key from environment variable
 // NEVER expose this key in client-side code!
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
