@@ -120,10 +120,13 @@ module.exports = async (req, res) => {
         });
 
     } catch (error) {
+        // Log detailed error server-side for debugging
         console.error('Stripe checkout error:', error);
         res.setHeader('Access-Control-Allow-Origin', '*');
+
+        // Return generic error to client (don't leak internal details)
         return res.status(500).json({
-            error: error.message || 'Failed to create checkout session'
+            error: 'Unable to create checkout session. Please try again.'
         });
     }
 };
