@@ -56,15 +56,30 @@ document.addEventListener("DOMContentLoaded", () => {
       colors || "linear-gradient(90deg,#ffd1dc,#ffd9a6)";
     previewArea.style.fontFamily = font;
 
-    previewArea.innerHTML = `
-      <div style="padding:12px">
-        <div style="font-weight:800;font-size:18px">${eventType} — x${qty}</div>
-        <div style="margin-top:8px;font-size:14px">
-          ${message || "Your message here"}
-        </div>
-        <div id="logo-mock" style="margin-top:10px"></div>
-      </div>
-    `;
+    // Use safe DOM manipulation instead of innerHTML to prevent XSS
+    const wrapper = document.createElement('div');
+    wrapper.style.padding = '12px';
+
+    const titleDiv = document.createElement('div');
+    titleDiv.style.fontWeight = '800';
+    titleDiv.style.fontSize = '18px';
+    titleDiv.textContent = `${eventType} — x${qty}`;
+
+    const messageDiv = document.createElement('div');
+    messageDiv.style.marginTop = '8px';
+    messageDiv.style.fontSize = '14px';
+    messageDiv.textContent = message || 'Your message here';
+
+    const logoMock = document.createElement('div');
+    logoMock.id = 'logo-mock';
+    logoMock.style.marginTop = '10px';
+
+    wrapper.appendChild(titleDiv);
+    wrapper.appendChild(messageDiv);
+    wrapper.appendChild(logoMock);
+
+    previewArea.innerHTML = '';
+    previewArea.appendChild(wrapper);
   }
 
   inputs.forEach(i => i.addEventListener("input", updatePreview));
