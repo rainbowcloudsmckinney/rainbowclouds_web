@@ -3,3 +3,4 @@ node_modules
 .DS_Store
 requirements.md
 server.js
+.vercel

@@ -225,7 +225,13 @@ document.addEventListener("DOMContentLoaded", () => {
       cartContainer.appendChild(row);
     });
 
-    totalContainer.innerHTML = `<h2>Total: $${total.toFixed(2)}</h2>`;
+    // Only show standalone total if shipping section doesn't exist
+    // (shipping section already displays subtotal + shipping + grand total)
+    if (!document.getElementById("shipping-section")) {
+      totalContainer.innerHTML = `<h2>Total: $${total.toFixed(2)}</h2>`;
+    } else {
+      totalContainer.innerHTML = "";
+    }
     updateCartButton();
   }
 

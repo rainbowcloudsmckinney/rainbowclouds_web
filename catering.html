@@ -1,64 +1,66 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Catering — Cotton Cloud Co.</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
   <header>
-  <div class="header-inner">
-    <div class="brand-group">
-      <div class="brand-logo">
-        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Rainbow Clouds</div>
+          <div class="small">Joy, Celebration & Sweetness</div>
+        </div>
       </div>
-      <div class="brand-text">
-        <div class="brand-title">Rainbow Clouds</div>
-        <div class="small">Joy, Celebration & Sweetness</div>
-      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+            <div class="nav-image-label">Flavors</div>
+          </div>
+        </a>
+
+        <a href="label.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
+            <div class="nav-image-label">Labels</div>
+          </div>
+        </a>
+
+        <a href="catering.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+            <div class="nav-image-label">Catering</div>
+          </div>
+        </a>
+
+        <a href="cart.html" class="nav-image-button">
+          <div class="nav-image-wrapper cart-wrapper">
+            <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+            <div class="nav-image-label">Cart</div>
+            <span id="cart-count" class="cart-count hidden">0</span>
+          </div>
+        </a>
+      </nav>
     </div>
-
-    <nav class="nav">
-      <a href="index.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
-          <div class="nav-image-label">Flavors</div>
-        </div>
-      </a>
-
-      <a href="label.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
-          <div class="nav-image-label">Labels</div>
-        </div>
-      </a>
-
-      <a href="catering.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
-          <div class="nav-image-label">Catering</div>
-        </div>
-      </a>
-
-      <a href="cart.html" class="nav-image-button">
-        <div class="nav-image-wrapper cart-wrapper">
-          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
-          <div class="nav-image-label">Cart</div>
-          <span id="cart-count" class="cart-count hidden">0</span>
-        </div>
-      </a>
-    </nav>
-  </div>
-</header>
+  </header>
 
   <div class="container">
     <h2>Event Catering Inquiries</h2>
     <p class="small">Warm, inviting, and tailored to your celebration.</p>
 
-    <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:12px">
+    <div class="catering-grid-wrapper" style="display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:12px">
       <div class="form-card">
-          <form id="catering-form">
+        <form id="catering-form">
 
           <!-- Web3Forms required -->
           <input type="hidden" name="access_key" value="94be8133-edc7-45d9-9dd6-8f56c93c6a3d">
@@ -122,17 +124,21 @@
       <div>
         <div style="font-weight:800">Past Setups</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
-<img src="assets/images/catering_1.svg" alt="catering 1" style="width:100%;border-radius:8px" />
-<img src="assets/images/catering_2.svg" alt="catering 2" style="width:100%;border-radius:8px" />
-<img src="assets/images/catering_3.svg" alt="catering 3" style="width:100%;border-radius:8px" />
+          <img src="assets/images/catering_1.svg" alt="catering 1" style="width:100%;border-radius:8px" />
+          <img src="assets/images/catering_2.svg" alt="catering 2" style="width:100%;border-radius:8px" />
+          <img src="assets/images/catering_3.svg" alt="catering 3" style="width:100%;border-radius:8px" />
 
         </div>
 
         <div style="margin-top:12px">
           <div style="font-weight:800">Testimonials</div>
           <div class="testimonials" style="margin-top:8px">
-            <div class="t"><strong>Sam R.</strong><div class="small">"The cotton candy station was the hit of our wedding — dreamy!"</div></div>
-            <div class="t"><strong>Lily M.</strong><div class="small">"So easy to work with. Kids loved the flavors."</div></div>
+            <div class="t"><strong>Sam R.</strong>
+              <div class="small">"The cotton candy station was the hit of our wedding — dreamy!"</div>
+            </div>
+            <div class="t"><strong>Lily M.</strong>
+              <div class="small">"So easy to work with. Kids loved the flavors."</div>
+            </div>
           </div>
         </div>
       </div>
@@ -142,4 +148,5 @@
 
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>
