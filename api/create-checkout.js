@@ -9,18 +9,8 @@ if (!process.env.STRIPE_SECRET_KEY) {
 // NEVER expose this key in client-side code!
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// Shipping rates by US state (same as frontend for validation)
-const SHIPPING_RATES = {
-    TX: 5,
-    LA: 8, OK: 8, AR: 8, NM: 8, MS: 8,
-    CO: 10, KS: 10, MO: 10, NE: 10, IA: 10, MN: 10, WI: 10,
-    IL: 10, IN: 10, OH: 10, MI: 10, TN: 10, KY: 10, AL: 10,
-    CA: 12, WA: 12, OR: 12, AZ: 12, NV: 12, UT: 12,
-    NY: 12, PA: 12, NJ: 12, MA: 12, CT: 12, FL: 12,
-    GA: 12, NC: 12, SC: 12, VA: 12, MD: 12,
-    AK: 18, HI: 18
-};
-const DEFAULT_SHIPPING = 12;
+// Flat shipping rate
+const FLAT_SHIPPING = 15;
 
 module.exports = async (req, res) => {
     // Get allowed origin from environment variable (defaults to * for development)
@@ -40,15 +30,11 @@ module.exports = async (req, res) => {
     }
 
     try {
-        const { items, state, successUrl, cancelUrl } = req.body;
+        const { items, successUrl, cancelUrl } = req.body;
 
         // Validate input
         if (!items || !Array.isArray(items) || items.length === 0) {
             return res.status(400).json({ error: 'Cart items required' });
-        }
-
-        if (!state || typeof state !== 'string') {
-            return res.status(400).json({ error: 'Shipping state required' });
         }
 
         // Calculate totals server-side (never trust client calculations for payment!)
@@ -64,9 +50,7 @@ module.exports = async (req, res) => {
             return sum + (item.price * item.qty);
         }, 0);
 
-        // Get shipping rate
-        const shippingRate = SHIPPING_RATES[state.toUpperCase()] || DEFAULT_SHIPPING;
-        const total = subtotal + shippingRate;
+        const total = subtotal + FLAT_SHIPPING;
 
         // Build line items for Stripe
         const lineItems = [
@@ -87,10 +71,10 @@ module.exports = async (req, res) => {
                 price_data: {
                     currency: 'usd',
                     product_data: {
-                        name: `Shipping to ${state.toUpperCase()}`,
-                        description: 'Standard shipping'
+                        name: 'Standard Shipping',
+                        description: 'Flat rate shipping across the US'
                     },
-                    unit_amount: Math.round(shippingRate * 100)
+                    unit_amount: Math.round(FLAT_SHIPPING * 100)
                 },
                 quantity: 1
             }
@@ -108,9 +92,8 @@ module.exports = async (req, res) => {
             },
             metadata: {
                 order_items: items.map(i => `${i.name} x${i.qty}`).join(', '),
-                shipping_state: state,
                 subtotal: subtotal.toFixed(2),
-                shipping: shippingRate.toFixed(2),
+                shipping: FLAT_SHIPPING.toFixed(2),
                 total: total.toFixed(2)
             }
         });

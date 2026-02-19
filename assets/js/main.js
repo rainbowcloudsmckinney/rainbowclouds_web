@@ -263,33 +263,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------------------------------
   // SHIPPING CALCULATION
   // ---------------------------------
-  const SHIPPING_RATES = {
-    // Local - Texas
-    TX: 5,
-    // South
-    LA: 8, OK: 8, AR: 8, NM: 8, MS: 8,
-    // Central
-    CO: 10, KS: 10, MO: 10, NE: 10, IA: 10, MN: 10, WI: 10,
-    IL: 10, IN: 10, OH: 10, MI: 10, TN: 10, KY: 10, AL: 10,
-    // East/West Coasts
-    CA: 12, WA: 12, OR: 12, AZ: 12, NV: 12, UT: 12,
-    NY: 12, PA: 12, NJ: 12, MA: 12, CT: 12, FL: 12,
-    GA: 12, NC: 12, SC: 12, VA: 12, MD: 12,
-    // Remote
-    AK: 18, HI: 18
-  };
-
-  // Default for unlisted states
-  const DEFAULT_SHIPPING = 12;
-
-  function getShippingRate(state) {
-    return SHIPPING_RATES[state] || DEFAULT_SHIPPING;
-  }
+  const FLAT_SHIPPING = 15;
 
   function updateTotals() {
     const cart = getCart();
     const shippingSection = document.getElementById("shipping-section");
-    const stateSelect = document.getElementById("shipping-state");
     const subtotalDisplay = document.getElementById("subtotal-display");
     const shippingDisplay = document.getElementById("shipping-display");
     const grandTotalDisplay = document.getElementById("grand-total-display");
@@ -307,19 +285,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (checkoutBtn) checkoutBtn.style.display = "block";
 
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const selectedState = stateSelect?.value || "";
-    const shipping = selectedState ? getShippingRate(selectedState) : 0;
-    const grandTotal = subtotal + shipping;
+    const grandTotal = subtotal + FLAT_SHIPPING;
 
     if (subtotalDisplay) subtotalDisplay.textContent = `$${subtotal.toFixed(2)}`;
-    if (shippingDisplay) shippingDisplay.textContent = selectedState ? `$${shipping.toFixed(2)}` : "Select state";
-    if (grandTotalDisplay) grandTotalDisplay.textContent = selectedState ? `$${grandTotal.toFixed(2)}` : `$${subtotal.toFixed(2)}`;
-  }
-
-  // Listen for state changes
-  const shippingStateSelect = document.getElementById("shipping-state");
-  if (shippingStateSelect) {
-    shippingStateSelect.addEventListener("change", updateTotals);
+    if (shippingDisplay) shippingDisplay.textContent = `$${FLAT_SHIPPING.toFixed(2)}`;
+    if (grandTotalDisplay) grandTotalDisplay.textContent = `$${grandTotal.toFixed(2)}`;
   }
 
   // Initial totals update
@@ -337,17 +307,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", async () => {
       const cart = getCart();
-      const stateSelect = document.getElementById("shipping-state");
-      const selectedState = stateSelect?.value;
 
       if (cart.length === 0) {
         alert("Your cart is empty!");
-        return;
-      }
-
-      if (!selectedState) {
-        alert("Please select your state for shipping.");
-        stateSelect?.focus();
         return;
       }
 
@@ -369,7 +331,6 @@ document.addEventListener("DOMContentLoaded", () => {
               price: item.price,
               qty: item.qty
             })),
-            state: selectedState,
             successUrl: `${window.location.origin}/success.html`,
             cancelUrl: `${window.location.origin}/cancel.html`
           })
