@@ -1,7 +1,7 @@
 const Stripe = require('stripe');
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const WEB3FORMS_KEY = '62541ea1-fe13-465c-8642-2157c92c067a';
+
 
 
 // Read raw body from request stream
@@ -47,15 +47,13 @@ const handler = async (req, res) => {
         const total = metadata.total || '0.00';
         const customerEmail = session.customer_details?.email || 'Not provided';
 
-        // Send order notification email via Web3Forms
+        // Send order notification email via Google Apps Script
         try {
-            await fetch('https://api.web3forms.com/submit', {
+            await fetch('https://script.google.com/macros/s/AKfycbyu99OSzsScUZRzdYHAgec1eGTc9nBRLP0ZSI7W7woM3ZI5RlNq8eREjJcgQEG2EemR/exec', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    access_key: WEB3FORMS_KEY,
                     subject: `🧁 New Paid Order - Rainbow Clouds ($${total})`,
-                    from_name: 'Rainbow Clouds Orders',
                     message: `Payment confirmed! New order received.\n\nCustomer Email: ${customerEmail}\n\nItems: ${orderItems}\n\nSubtotal: $${subtotal}\nShipping: $${shipping}\nTotal: $${total}\n\nStripe Payment ID: ${session.payment_intent}`
                 })
             });
