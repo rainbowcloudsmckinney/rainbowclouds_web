@@ -264,6 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // SHIPPING CALCULATION
   // ---------------------------------
   const FLAT_SHIPPING = 15;
+  const MIN_ORDER = 6;
 
   function updateTotals() {
     const cart = getCart();
@@ -272,12 +273,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const shippingDisplay = document.getElementById("shipping-display");
     const grandTotalDisplay = document.getElementById("grand-total-display");
     const checkoutBtn = document.getElementById("checkout-btn");
+    const minOrderMsg = document.getElementById("min-order-msg");
 
     if (!shippingSection) return;
+
+    const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
 
     if (cart.length === 0) {
       shippingSection.style.display = "none";
       if (checkoutBtn) checkoutBtn.style.display = "none";
+      if (minOrderMsg) minOrderMsg.style.display = "none";
       return;
     }
 
@@ -290,6 +295,29 @@ document.addEventListener("DOMContentLoaded", () => {
     if (subtotalDisplay) subtotalDisplay.textContent = `$${subtotal.toFixed(2)}`;
     if (shippingDisplay) shippingDisplay.textContent = `$${FLAT_SHIPPING.toFixed(2)}`;
     if (grandTotalDisplay) grandTotalDisplay.textContent = `$${grandTotal.toFixed(2)}`;
+
+    // Minimum order messaging
+    if (minOrderMsg) {
+      minOrderMsg.style.display = "block";
+      if (totalQty < MIN_ORDER) {
+        const remaining = MIN_ORDER - totalQty;
+        minOrderMsg.className = "min-order-msg warning";
+        minOrderMsg.textContent = `Add ${remaining} more item${remaining === 1 ? '' : 's'} to meet the minimum order of ${MIN_ORDER}`;
+        if (checkoutBtn) {
+          checkoutBtn.disabled = true;
+          checkoutBtn.style.opacity = "0.5";
+          checkoutBtn.style.cursor = "not-allowed";
+        }
+      } else {
+        minOrderMsg.className = "min-order-msg ok";
+        minOrderMsg.textContent = `✓ Minimum order met (${totalQty} items)`;
+        if (checkoutBtn) {
+          checkoutBtn.disabled = false;
+          checkoutBtn.style.opacity = "1";
+          checkoutBtn.style.cursor = "pointer";
+        }
+      }
+    }
   }
 
   // Initial totals update
@@ -310,6 +338,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (cart.length === 0) {
         alert("Your cart is empty!");
+        return;
+      }
+
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      if (totalQty < MIN_ORDER) {
+        alert(`Minimum order is ${MIN_ORDER} items. You currently have ${totalQty}.`);
         return;
       }
 
@@ -369,54 +403,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   // ---------------------------------
-  // CATERING FORM (GOOGLE APPS SCRIPT)
+  // FORM HELPERS (shared by catering + labels)
   // ---------------------------------
-  const cateringForm = document.getElementById("catering-form");
-  const formStatus = document.getElementById("form-status");
-  const submitBtn = document.getElementById("catering-submit");
+  // Old Google Apps Script endpoint (kept for reference):
+  // const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbznd0Fft_iiPx1hm19YI2X2jM3isTMx65aW6mK5ho9uRXCTL6QYiiXJZrDZZuZ-F2Cn_Q/exec";
+  const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 
-  // ✅ PASTE YOUR DEPLOYED WEB APP URL HERE
-  const CATERING_ENDPOINT = "https://script.google.com/macros/s/AKfycbznd0Fft_iiPx1hm19YI2X2jM3isTMx65aW6mK5ho9uRXCTL6QYiiXJZrDZZuZ-F2Cn_Q/exec";
-
-  function setStatus(message, type) {
-    if (!formStatus) return;
-
-    formStatus.classList.remove("success", "error", "sending");
-    if (type) formStatus.classList.add(type);
-
-    formStatus.textContent = message;
-    formStatus.classList.add("show");
+  function setStatus(el, message, type) {
+    if (!el) return;
+    el.classList.remove("success", "error", "sending");
+    if (type) el.classList.add(type);
+    el.textContent = message;
+    el.classList.add("show");
   }
 
-  function hideStatusAfter(ms) {
-    if (!formStatus) return;
-    clearTimeout(hideStatusAfter._t);
-    hideStatusAfter._t = setTimeout(() => {
-      formStatus.classList.remove("show", "success", "error", "sending");
+  function hideStatusAfter(el, ms) {
+    if (!el) return;
+    clearTimeout(el._hideTimer);
+    el._hideTimer = setTimeout(() => {
+      el.classList.remove("show", "success", "error", "sending");
     }, ms);
   }
 
-  if (cateringForm) {
-    cateringForm.addEventListener("submit", async (e) => {
+  async function submitForm(form, statusEl, btn, defaultBtnText, beforeSubmit) {
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      if (!CATERING_ENDPOINT || CATERING_ENDPOINT.includes("PASTE_")) {
-        setStatus("❌ Missing form endpoint URL in main.js", "error");
-        return;
+      if (btn) {
+        btn.disabled = true;
+        btn.dataset.originalText = btn.textContent;
+        btn.textContent = "Sending...";
       }
 
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.dataset.originalText = submitBtn.textContent;
-        submitBtn.textContent = "Sending...";
-      }
-
-      setStatus("Submitting your request...", "sending");
+      setStatus(statusEl, "Submitting your request...", "sending");
 
       try {
-        const formData = new FormData(cateringForm);
+        const formData = new FormData(form);
 
-        const response = await fetch(CATERING_ENDPOINT, {
+        // Optional pre-processing before submission
+        if (beforeSubmit) beforeSubmit(formData);
+
+        const response = await fetch(FORM_ENDPOINT, {
           method: "POST",
           body: formData
         });
@@ -424,23 +453,54 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await response.json();
 
         if (result.success) {
-          setStatus("✅ Your query has been submitted. We’ll get back to you soon. Thank you!", "success");
-          cateringForm.reset();
-          hideStatusAfter(5000);
+          setStatus(statusEl, "✅ Your request has been submitted. We'll get back to you soon. Thank you!", "success");
+          form.reset();
+          hideStatusAfter(statusEl, 5000);
         } else {
-          setStatus("❌ Submission failed. Please try again.", "error");
-          hideStatusAfter(5000);
+          setStatus(statusEl, "❌ Submission failed. Please try again.", "error");
+          hideStatusAfter(statusEl, 5000);
         }
       } catch (err) {
-        setStatus("❌ Network error. Please try again.", "error");
-        hideStatusAfter(5000);
+        setStatus(statusEl, "❌ Network error. Please try again.", "error");
+        hideStatusAfter(statusEl, 5000);
       } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitBtn.dataset.originalText || "Send Inquiry";
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = btn.dataset.originalText || defaultBtnText;
         }
       }
     });
   }
+
+  // ---------------------------------
+  // CATERING FORM
+  // ---------------------------------
+  submitForm(
+    document.getElementById("catering-form"),
+    document.getElementById("form-status"),
+    document.getElementById("catering-submit"),
+    "Send Inquiry"
+  );
+
+  // ---------------------------------
+  // LABEL FORM
+  // ---------------------------------
+  submitForm(
+    document.getElementById("label-form"),
+    document.getElementById("label-status"),
+    document.getElementById("label-submit"),
+    "Request Sample",
+    (formData) => {
+      // Bundle label details into the 'message' field the script expects
+      const eventType = formData.get("event_type") || "N/A";
+      const customMsg = formData.get("custom_message") || "N/A";
+      const colors = formData.get("preferred_colors") || "N/A";
+      const font = formData.get("font_style") || "N/A";
+      const qty = formData.get("quantity_needed") || "N/A";
+
+      const message = `[LABEL INQUIRY]\nEvent Type: ${eventType}\nCustom Message: ${customMsg}\nPreferred Colors: ${colors}\nFont Style: ${font}\nQuantity: ${qty}`;
+      formData.set("message", message);
+    }
+  );
 
 });

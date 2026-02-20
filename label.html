@@ -1,56 +1,58 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Custom Labels — Cotton Cloud Co.</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
   <header>
-  <div class="header-inner">
-    <div class="brand-group">
-      <div class="brand-logo">
-        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Rainbow Clouds</div>
+          <div class="small">Joy, Celebration & Sweetness</div>
+        </div>
       </div>
-      <div class="brand-text">
-        <div class="brand-title">Rainbow Clouds</div>
-        <div class="small">Joy, Celebration & Sweetness</div>
-      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+            <div class="nav-image-label">Flavors</div>
+          </div>
+        </a>
+
+        <a href="label.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
+            <div class="nav-image-label">Labels</div>
+          </div>
+        </a>
+
+        <a href="catering.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+            <div class="nav-image-label">Catering</div>
+          </div>
+        </a>
+
+        <a href="cart.html" class="nav-image-button">
+          <div class="nav-image-wrapper cart-wrapper">
+            <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+            <div class="nav-image-label">Cart</div>
+            <span id="cart-count" class="cart-count hidden">0</span>
+          </div>
+        </a>
+      </nav>
     </div>
-
-    <nav class="nav">
-      <a href="index.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
-          <div class="nav-image-label">Flavors</div>
-        </div>
-      </a>
-
-      <a href="label.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
-          <div class="nav-image-label">Labels</div>
-        </div>
-      </a>
-
-      <a href="catering.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
-          <div class="nav-image-label">Catering</div>
-        </div>
-      </a>
-
-      <a href="cart.html" class="nav-image-button">
-        <div class="nav-image-wrapper cart-wrapper">
-          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
-          <div class="nav-image-label">Cart</div>
-          <span id="cart-count" class="cart-count hidden">0</span>
-        </div>
-      </a>
-    </nav>
-  </div>
-</header>
+  </header>
 
 
   <div class="container">
@@ -59,9 +61,30 @@
 
     <div class="label-grid" style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
       <div class="form-card">
-        <form id="label-form" onsubmit="event.preventDefault()">
+        <form id="label-form">
+          <input type="hidden" name="access_key" value="62541ea1-fe13-465c-8642-2157c92c067a">
+          <input type="hidden" name="subject" value="New Label Inquiry - Rainbow Clouds">
+          <input type="hidden" name="from_name" value="Rainbow Clouds Website">
+          <input type="hidden" name="replyto" value="%email%">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+          <input type="hidden" name="event_date" value="N/A - Label Inquiry">
+          <input type="hidden" name="event_location" value="N/A - Label Inquiry">
+          <input type="hidden" name="guest_count" value="0">
+
+          <label>Name
+            <input type="text" name="name" required>
+          </label>
+
+          <label>Email
+            <input type="email" name="email" required>
+          </label>
+
+          <label>Phone Number
+            <input type="text" name="phone">
+          </label>
+
           <label>Event Type
-            <select id="event-type" class="label-input">
+            <select id="event-type" name="event_type" class="label-input">
               <option>Birthday</option>
               <option>Baby Shower</option>
               <option>Gender Reveal</option>
@@ -71,19 +94,21 @@
           </label>
 
           <label>Custom Message
-            <textarea id="custom-message" class="label-input" rows="3" placeholder="e.g. Happy 5th Birthday, Ava!"></textarea>
+            <textarea id="custom-message" name="custom_message" class="label-input" rows="3"
+              placeholder="e.g. Happy 5th Birthday, Ava!"></textarea>
           </label>
 
           <label>Preferred Colors
-            <input id="preferred-colors" class="label-input" type="text" placeholder="e.g. pastel pink & mint or linear-gradient(#ffd1dc,#ffd9a6)">
+            <input id="preferred-colors" name="preferred_colors" class="label-input" type="text"
+              placeholder="e.g. pastel pink & mint">
           </label>
 
           <label>Font Style
-            <select id="font-style" class="label-input">
-              <option value="Helvetica, Arial, sans-serif">Classic</option>
-              <option value="Georgia, serif">Elegant</option>
-              <option value="Comic Sans MS, cursive">Playful</option>
-              <option value="Brush Script MT, cursive">Script</option>
+            <select id="font-style" name="font_style" class="label-input">
+              <option value="Classic">Classic</option>
+              <option value="Elegant">Elegant</option>
+              <option value="Playful">Playful</option>
+              <option value="Script">Script</option>
             </select>
           </label>
 
@@ -92,14 +117,16 @@
           </label>
 
           <label>Quantity Needed
-            <input id="quantity-needed" class="label-input" type="number" min="1" value="10">
+            <input id="quantity-needed" name="quantity_needed" class="label-input" type="number" min="1" value="10">
           </label>
 
           <div style="margin-top:12px">
-            <button type="submit" class="button">Request Sample</button>
+            <button type="submit" class="button" id="label-submit">Request Sample</button>
             <span class="small" style="margin-left:8px">We'll contact you with a quote.</span>
           </div>
         </form>
+
+        <p id="label-status" class="small" style="margin-top:10px"></p>
       </div>
 
       <div>
@@ -113,4 +140,5 @@
 
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>

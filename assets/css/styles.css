@@ -545,8 +545,9 @@ input[type="text"], input[type="email"], input[type="date"], input[type="number"
 .checkout-btn:hover{
   background:#e63b5a;
 }
-/* Catering form status animation */
-#form-status {
+/* Form status animation */
+#form-status,
+#label-status {
   margin-top: 10px;
   padding: 10px 12px;
   border-radius: 10px;
@@ -557,20 +558,24 @@ input[type="text"], input[type="email"], input[type="date"], input[type="number"
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-#form-status.show {
+#form-status.show,
+#label-status.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-#form-status.success {
+#form-status.success,
+#label-status.success {
   border: 1px solid rgba(46, 125, 50, 0.25);
 }
 
-#form-status.error {
+#form-status.error,
+#label-status.error {
   border: 1px solid rgba(198, 40, 40, 0.25);
 }
 
-#form-status.sending {
+#form-status.sending,
+#label-status.sending {
   border: 1px solid rgba(85, 85, 85, 0.18);
 }
 

@@ -52,6 +52,27 @@
       color: #888;
       margin-top: 5px;
     }
+
+    .min-order-msg {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .min-order-msg.warning {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffc107;
+    }
+
+    .min-order-msg.ok {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #28a745;
+    }
   </style>
 </head>
 
@@ -128,6 +149,8 @@
     </div>
 
     <div id="cart-total" class="cart-total"></div>
+
+    <div id="min-order-msg" class="min-order-msg" style="display: none;"></div>
 
     <button id="checkout-btn" class="checkout-btn">Checkout</button>
   </div>

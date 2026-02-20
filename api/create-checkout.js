@@ -11,6 +11,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Flat shipping rate
 const FLAT_SHIPPING = 15;
+const MIN_ORDER = 6;
 
 module.exports = async (req, res) => {
     // Get allowed origin from environment variable (defaults to * for development)
@@ -35,6 +36,12 @@ module.exports = async (req, res) => {
         // Validate input
         if (!items || !Array.isArray(items) || items.length === 0) {
             return res.status(400).json({ error: 'Cart items required' });
+        }
+
+        // Validate minimum order
+        const totalQty = items.reduce((sum, item) => sum + (item.qty || 0), 0);
+        if (totalQty < MIN_ORDER) {
+            return res.status(400).json({ error: `Minimum order is ${MIN_ORDER} items` });
         }
 
         // Calculate totals server-side (never trust client calculations for payment!)
@@ -97,6 +104,9 @@ module.exports = async (req, res) => {
                 total: total.toFixed(2)
             }
         });
+
+        // Order notification email is sent via webhook (api/stripe-webhook.js)
+        // only after payment is confirmed — not here at session creation
 
         // Return the checkout URL
         res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
