@@ -3,12 +3,6 @@ const Stripe = require('stripe');
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const WEB3FORMS_KEY = '62541ea1-fe13-465c-8642-2157c92c067a';
 
-// Disable Vercel's default body parsing — Stripe needs the raw body for signature verification
-module.exports.config = {
-    api: {
-        bodyParser: false,
-    },
-};
 
 // Read raw body from request stream
 function getRawBody(req) {
@@ -20,7 +14,7 @@ function getRawBody(req) {
     });
 }
 
-module.exports = async (req, res) => {
+const handler = async (req, res) => {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -73,4 +67,11 @@ module.exports = async (req, res) => {
 
     // Always return 200 to acknowledge receipt (Stripe will retry if it doesn't get 200)
     return res.status(200).json({ received: true });
+};
+
+module.exports = handler;
+module.exports.config = {
+    api: {
+        bodyParser: false,
+    },
 };
