@@ -47,17 +47,33 @@ const handler = async (req, res) => {
         const total = metadata.total || '0.00';
         const customerEmail = session.customer_details?.email || 'Not provided';
 
-        // Send order notification email via Google Apps Script
+        // Send order notification email via Resend
         try {
-            await fetch('https://script.google.com/macros/s/AKfycbyu99OSzsScUZRzdYHAgec1eGTc9nBRLP0ZSI7W7woM3ZI5RlNq8eREjJcgQEG2EemR/exec', {
+            const res = await fetch('https://api.resend.com/emails', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer re_5eLCKFkL_ENpJ1bxYQ252C5iBCuuHEKfZ'
+                },
                 body: JSON.stringify({
+                    from: 'Rainbow Clouds Orders <onboarding@resend.dev>',
+                    to: ['rainbowcloudsmckinney@gmail.com'],
                     subject: `🧁 New Paid Order - Rainbow Clouds ($${total})`,
-                    message: `Payment confirmed! New order received.\n\nCustomer Email: ${customerEmail}\n\nItems: ${orderItems}\n\nSubtotal: $${subtotal}\nShipping: $${shipping}\nTotal: $${total}\n\nStripe Payment ID: ${session.payment_intent}`
+                    html: `<p>Payment confirmed! New order received.</p><br>
+                           <p><b>Customer Email:</b> ${customerEmail}</p>
+                           <p><b>Items:</b> ${orderItems}</p>
+                           <p><b>Subtotal:</b> $${subtotal}<br>
+                           <b>Shipping:</b> $${shipping}<br>
+                           <b>Total:</b> $${total}</p>
+                           <p><b>Stripe Payment ID:</b> ${session.payment_intent}</p>`
                 })
             });
-            console.log('Order notification sent for session:', session.id);
+
+            if (!res.ok) {
+                console.error('Resend error:', await res.text());
+            } else {
+                console.log('Order notification sent for session:', session.id);
+            }
         } catch (err) {
             console.error('Order notification failed:', err);
         }
