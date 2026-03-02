@@ -275,6 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const grandTotalDisplay = document.getElementById("grand-total-display");
     const checkoutBtn = document.getElementById("checkout-btn");
     const minOrderMsg = document.getElementById("min-order-msg");
+    const shippingNote = document.querySelector(".shipping-note");
 
     if (!shippingSection) return;
 
@@ -297,6 +298,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (subtotalDisplay) subtotalDisplay.textContent = `$${subtotal.toFixed(2)}`;
     if (shippingDisplay) shippingDisplay.textContent = shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`;
     if (grandTotalDisplay) grandTotalDisplay.textContent = `$${grandTotal.toFixed(2)}`;
+    if (shippingNote) {
+      shippingNote.textContent = shippingCost === 0 ? "Free shipping — included with your order!" : "Standard shipping — $15 flat rate across the US.";
+    }
 
     // Minimum order messaging
     if (minOrderMsg) {
