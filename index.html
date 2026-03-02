@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,315 +10,319 @@
 
 <body>
 
-<header>
-  <div class="header-inner">
-    <div class="brand-group">
-      <div class="brand-logo">
-        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+  <header>
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Rainbow Clouds</div>
+          <div class="small">Joy, Celebration & Sweetness</div>
+        </div>
       </div>
-      <div class="brand-text">
-        <div class="brand-title">Rainbow Clouds</div>
-        <div class="small">Joy, Celebration & Sweetness</div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+            <div class="nav-image-label">Flavors</div>
+          </div>
+        </a>
+
+        <a href="label.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
+            <div class="nav-image-label">Labels</div>
+          </div>
+        </a>
+
+        <a href="catering.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+            <div class="nav-image-label">Catering</div>
+          </div>
+        </a>
+
+        <a href="cart.html" class="nav-image-button">
+          <div class="nav-image-wrapper cart-wrapper">
+            <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+            <div class="nav-image-label">Cart</div>
+            <span id="cart-count" class="cart-count hidden">0</span>
+          </div>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Flavor Gallery</h1>
+        <p class="small">Bright, colorful, and whimsical — pick your cloud!</p>
       </div>
-    </div>
+      <div class="hero-right">
+        <span class="badge">All flavors $5 · Min. order of 6</span>
+        <span class="badge"
+          style="background:#eafaf1;color:#186a3b;border-color:#b8e6cb;margin-top:5px;display:inline-block;">Free
+          shipping up to 12 items</span>
+      </div>
+    </section>
 
-    <nav class="nav">
-      <a href="index.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
-          <div class="nav-image-label">Flavors</div>
-        </div>
-      </a>
+    <!-- Product Grid -->
+    <section class="grid">
 
-      <a href="label.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/label.png" class="nav-image-icon" alt="Labels">
-          <div class="nav-image-label">Labels</div>
-        </div>
-      </a>
-
-      <a href="catering.html" class="nav-image-button">
-        <div class="nav-image-wrapper">
-          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
-          <div class="nav-image-label">Catering</div>
-        </div>
-      </a>
-
-      <a href="cart.html" class="nav-image-button">
-        <div class="nav-image-wrapper cart-wrapper">
-          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
-          <div class="nav-image-label">Cart</div>
-          <span id="cart-count" class="cart-count hidden">0</span>
-        </div>
-      </a>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-left">
-      <h1>Flavor Gallery</h1>
-      <p class="small">Bright, colorful, and whimsical — pick your cloud!</p>
-    </div>
-    <div class="hero-right">
-      <span class="badge">All flavors $3 · Min. order of 6</span>
-    </div>
-  </section>
-
-  <!-- Product Grid -->
-  <section class="grid">
-
-    <!-- Strawberry -->
-    <div class="card" data-name="Strawberry">
-      <img src="assets/images/NewStrawberry.png" alt="Strawberry cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Strawberry</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">A Pink Berry Cloud captures the light, sweet essence of sun-ripened strawberries.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Strawberry -->
+      <div class="card" data-name="Strawberry">
+        <img src="assets/images/NewStrawberry.png" alt="Strawberry cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Strawberry</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">A Pink Berry Cloud captures the light, sweet essence of sun-ripened strawberries.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Banana -->
-    <div class="card" data-name="Banana">
-      <img src="assets/images/NewBanana.png" alt="Banana cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Banana</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">A Tropical Cream Cloud with smooth, sweet banana flavor.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Banana -->
+      <div class="card" data-name="Banana">
+        <img src="assets/images/NewBanana.png" alt="Banana cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Banana</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">A Tropical Cream Cloud with smooth, sweet banana flavor.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Grape -->
-    <div class="card" data-name="Grape">
-      <img src="assets/images/NewGrape.png" alt="Grape cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Grape</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">A Purple Cloud bursting with nostalgic grape goodness.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Grape -->
+      <div class="card" data-name="Grape">
+        <img src="assets/images/NewGrape.png" alt="Grape cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Grape</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">A Purple Cloud bursting with nostalgic grape goodness.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Passion Fruit -->
-    <div class="card" data-name="Passion Fruit">
-      <img src="assets/images/NewPassionfruit.png" alt="Passion Fruit cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Passion Fruit</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Tangy-sweet tropical flavor with a refreshing kick.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Passion Fruit -->
+      <div class="card" data-name="Passion Fruit">
+        <img src="assets/images/NewPassionfruit.png" alt="Passion Fruit cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Passion Fruit</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Tangy-sweet tropical flavor with a refreshing kick.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Blue Raspberry -->
-    <div class="card" data-name="Blue Raspberry">
-      <img src="assets/images/NewBlueRaspberry.png" alt="Blue Raspberry cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Blue Raspberry</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Sweet and tangy with a playful sour twist.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Blue Raspberry -->
+      <div class="card" data-name="Blue Raspberry">
+        <img src="assets/images/NewBlueRaspberry.png" alt="Blue Raspberry cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Blue Raspberry</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Sweet and tangy with a playful sour twist.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Watermelon -->
-    <div class="card" data-name="Watermelon">
-      <img src="assets/images/NewWatermelon.png" alt="Watermelon cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Watermelon</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Juicy, refreshing summer watermelon flavor.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Watermelon -->
+      <div class="card" data-name="Watermelon">
+        <img src="assets/images/NewWatermelon.png" alt="Watermelon cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Watermelon</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Juicy, refreshing summer watermelon flavor.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Cherry Lime -->
-    <div class="card" data-name="Cherry Lime">
-      <img src="assets/images/NewCherryLime.png" alt="Cherry Lime cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Cherry Lime</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Sweet cherry blended with zesty lime.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Cherry Lime -->
+      <div class="card" data-name="Cherry Lime">
+        <img src="assets/images/NewCherryLime.png" alt="Cherry Lime cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Cherry Lime</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Sweet cherry blended with zesty lime.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Cherry -->
-    <div class="card" data-name="Cherry">
-      <img src="assets/images/NewCherry.png" alt="Cherry cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Cherry</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Bold, classic cherry flavor.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Cherry -->
+      <div class="card" data-name="Cherry">
+        <img src="assets/images/NewCherry.png" alt="Cherry cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Cherry</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Bold, classic cherry flavor.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Orange -->
-    <div class="card" data-name="Orange">
-      <img src="assets/images/NewOrange.png" alt="Orange cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Orange</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Bright citrus burst of sunshine.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Orange -->
+      <div class="card" data-name="Orange">
+        <img src="assets/images/NewOrange.png" alt="Orange cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Orange</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Bright citrus burst of sunshine.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Green Apple -->
-    <div class="card" data-name="Green Apple">
-      <img src="assets/images/NewGreenApple.png" alt="Green Apple cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Green Apple</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Crisp and tart apple zing.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Green Apple -->
+      <div class="card" data-name="Green Apple">
+        <img src="assets/images/NewGreenApple.png" alt="Green Apple cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Green Apple</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Crisp and tart apple zing.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Bubble Gum -->
-    <div class="card" data-name="Bubble Gum">
-      <img src="assets/images/NewBubblegum.png" alt="Bubble Gum cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Bubble Gum</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Classic bubblegum fun and nostalgia.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Bubble Gum -->
+      <div class="card" data-name="Bubble Gum">
+        <img src="assets/images/NewBubblegum.png" alt="Bubble Gum cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Bubble Gum</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Classic bubblegum fun and nostalgia.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Pink Vanilla -->
-    <div class="card" data-name="Pink Vanilla">
-      <img src="assets/images/NewPinkVanilla.png" alt="Pink Vanilla cotton candy">
-      <div class="body">
-        <div class="card-header">
-          <span class="card-title">Pink Vanilla</span>
-          <span class="card-price">$3</span>
-        </div>
-        <p class="small">Smooth, creamy, timeless vanilla sweetness.</p>
-        <div class="cart-controls">
-          <button class="add-to-cart" data-price="3">Add to Cart</button>
-          <div class="qty-controls hidden">
-            <button class="qty-minus">−</button>
-            <span class="qty-number">1</span>
-            <button class="qty-plus">+</button>
+      <!-- Pink Vanilla -->
+      <div class="card" data-name="Pink Vanilla">
+        <img src="assets/images/NewPinkVanilla.png" alt="Pink Vanilla cotton candy">
+        <div class="body">
+          <div class="card-header">
+            <span class="card-title">Pink Vanilla</span>
+            <span class="card-price">$5</span>
+          </div>
+          <p class="small">Smooth, creamy, timeless vanilla sweetness.</p>
+          <div class="cart-controls">
+            <button class="add-to-cart" data-price="5">Add to Cart</button>
+            <div class="qty-controls hidden">
+              <button class="qty-minus">−</button>
+              <span class="qty-number">1</span>
+              <button class="qty-plus">+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </section>
+    </section>
 
-</main>
+  </main>
 
-<footer class="footer">
-  <div class="small">Rainbow Clouds - Where Sweet Dreams Come True.</div>
-</footer>
+  <footer class="footer">
+    <div class="small">Rainbow Clouds - Where Sweet Dreams Come True.</div>
+  </footer>
 
-<script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
+
 </html>

@@ -12,6 +12,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 // Flat shipping rate
 const FLAT_SHIPPING = 15;
 const MIN_ORDER = 6;
+const FREE_SHIPPING_THRESHOLD = 12;
 
 module.exports = async (req, res) => {
     // Get allowed origin from environment variable (defaults to * for development)
@@ -50,14 +51,15 @@ module.exports = async (req, res) => {
             if (!item.name || typeof item.price !== 'number' || typeof item.qty !== 'number') {
                 throw new Error('Invalid item format');
             }
-            // All cotton candy is $3 - validate price
-            if (item.price !== 3) {
+            // All cotton candy is $5 - validate price
+            if (item.price !== 5) {
                 throw new Error('Invalid item price');
             }
             return sum + (item.price * item.qty);
         }, 0);
 
-        const total = subtotal + FLAT_SHIPPING;
+        const shippingCost = totalQty <= FREE_SHIPPING_THRESHOLD ? 0 : FLAT_SHIPPING;
+        const total = subtotal + shippingCost;
 
         // Build line items for Stripe
         const lineItems = [
@@ -78,10 +80,10 @@ module.exports = async (req, res) => {
                 price_data: {
                     currency: 'usd',
                     product_data: {
-                        name: 'Standard Shipping',
-                        description: 'Flat rate shipping across the US'
+                        name: shippingCost === 0 ? 'Free Shipping (Up to 12 items)' : 'Standard Shipping',
+                        description: shippingCost === 0 ? 'Included with your order' : 'Flat rate shipping across the US'
                     },
-                    unit_amount: Math.round(FLAT_SHIPPING * 100)
+                    unit_amount: Math.round(shippingCost * 100)
                 },
                 quantity: 1
             }
@@ -100,7 +102,7 @@ module.exports = async (req, res) => {
             metadata: {
                 order_items: items.map(i => `${i.name} x${i.qty}`).join(', '),
                 subtotal: subtotal.toFixed(2),
-                shipping: FLAT_SHIPPING.toFixed(2),
+                shipping: shippingCost.toFixed(2),
                 total: total.toFixed(2)
             }
         });

@@ -265,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------------------------------
   const FLAT_SHIPPING = 15;
   const MIN_ORDER = 6;
+  const FREE_SHIPPING_THRESHOLD = 12;
 
   function updateTotals() {
     const cart = getCart();
@@ -290,10 +291,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (checkoutBtn) checkoutBtn.style.display = "block";
 
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const grandTotal = subtotal + FLAT_SHIPPING;
+    const shippingCost = totalQty <= FREE_SHIPPING_THRESHOLD ? 0 : FLAT_SHIPPING;
+    const grandTotal = subtotal + shippingCost;
 
     if (subtotalDisplay) subtotalDisplay.textContent = `$${subtotal.toFixed(2)}`;
-    if (shippingDisplay) shippingDisplay.textContent = `$${FLAT_SHIPPING.toFixed(2)}`;
+    if (shippingDisplay) shippingDisplay.textContent = shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`;
     if (grandTotalDisplay) grandTotalDisplay.textContent = `$${grandTotal.toFixed(2)}`;
 
     // Minimum order messaging
