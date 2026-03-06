@@ -40,29 +40,50 @@ document.addEventListener("DOMContentLoaded", () => {
   // LABEL PREVIEW
   // ---------------------------------
   const previewArea = document.getElementById("label-preview");
-  const inputs = document.querySelectorAll(".label-input");
-  const logoInput = document.getElementById("logo-input");
+  const inputs      = document.querySelectorAll(".label-input");
+  const logoInput   = document.getElementById("logo-input");
+
+  // Persists across re-renders so the logo survives updatePreview() calls
+  let logoDataUrl = null;
+
+  const SHAPES = {
+    rectangle: { borderRadius: "18px", clipPath: "",                aspectRatio: "4/3" },
+    circle:    { borderRadius: "50%",  clipPath: "",                aspectRatio: "1/1" },
+    oval:      { borderRadius: "50%",  clipPath: "",                aspectRatio: "2/1" },
+    cloud:     { borderRadius: "0",    clipPath: "url(#cloud-clip)", aspectRatio: "5/3" },
+  };
 
   function updatePreview() {
     if (!previewArea) return;
 
-    const eventType = document.getElementById("event-type")?.value || "";
-    const message = document.getElementById("custom-message")?.value || "";
-    const colors = document.getElementById("preferred-colors")?.value || "";
-    const font = document.getElementById("font-style")?.value || "";
-    const qty = document.getElementById("quantity-needed")?.value || "1";
+    const title    = document.getElementById("label-title")?.value.trim()    || "";
+    const message  = document.getElementById("custom-message")?.value.trim() || "";
+    const shape    = document.getElementById("label-shape")?.value            || "rectangle";
+    const font     = document.getElementById("font-style")?.value             || "Inter, system-ui, sans-serif";
+    const bgColor  = document.getElementById("bg-color")?.value               || "#ffd1dc";
+    const txtColor = document.getElementById("font-color")?.value             || "#311b92";
+    const s = SHAPES[shape] || SHAPES.rectangle;
 
-    previewArea.style.background =
-      colors || "linear-gradient(90deg,#ffd1dc,#ffd9a6)";
-    previewArea.style.fontFamily = font;
+    const logoHtml = logoDataUrl
+      ? `<div class="label-shape-logo"><img src="${logoDataUrl}" alt="Custom logo"></div>`
+      : `<div class="label-img-placeholder">Your Image</div>`;
+
+    const clipStyle = s.clipPath ? `clip-path:${s.clipPath};` : "";
 
     previewArea.innerHTML = `
-      <div style="padding:12px">
-        <div style="font-weight:800;font-size:18px">${eventType} — x${qty}</div>
-        <div style="margin-top:8px;font-size:14px">
-          ${message || "Your message here"}
+      <div class="label-shape" style="
+        background:${bgColor};
+        color:${txtColor};
+        font-family:${font};
+        border-radius:${s.borderRadius};
+        aspect-ratio:${s.aspectRatio};
+        ${clipStyle}
+      ">
+        <div class="label-shape-inner">
+          <div class="label-shape-title">${title || "Your Title"}</div>
+          ${logoHtml}
+          <div class="label-shape-message">${message || "Your Message"}</div>
         </div>
-        <div id="logo-mock" style="margin-top:10px"></div>
       </div>
     `;
   }
@@ -73,19 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
     logoInput.addEventListener("change", function () {
       const file = this.files[0];
       if (!file) return;
-
       const reader = new FileReader();
       reader.onload = e => {
-        const img = new Image();
-        img.src = e.target.result;
-        img.style.maxHeight = "60px";
-        img.style.maxWidth = "160px";
-
-        const logoMock = document.getElementById("logo-mock");
-        if (logoMock) {
-          logoMock.innerHTML = "";
-          logoMock.appendChild(img);
-        }
+        logoDataUrl = e.target.result;
+        updatePreview();
       };
       reader.readAsDataURL(file);
     });
@@ -165,6 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------------------------------
   const cartContainer = document.getElementById("cart-items");
   const totalContainer = document.getElementById("cart-total");
+  const checkoutBtn = document.getElementById("checkout-btn");
+
+  const MIN_ORDER = 30;
 
   function renderCart() {
     if (!cartContainer || !totalContainer) return;
@@ -175,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cart.length === 0) {
       cartContainer.innerHTML = "<p>Your cart is empty.</p>";
       totalContainer.innerHTML = "";
+      if (checkoutBtn) checkoutBtn.disabled = true;
       updateCartButton();
       return;
     }
@@ -210,7 +226,18 @@ document.addEventListener("DOMContentLoaded", () => {
       cartContainer.appendChild(row);
     });
 
-    totalContainer.innerHTML = `<h2>Total: $${total.toFixed(2)}</h2>`;
+    const remaining = MIN_ORDER - total;
+    if (remaining > 0) {
+      totalContainer.innerHTML = `
+        <h2>Total: $${total.toFixed(2)}</h2>
+        <p class="cart-min-notice">Add $${remaining.toFixed(2)} more to unlock checkout (minimum $${MIN_ORDER})</p>
+      `;
+      if (checkoutBtn) checkoutBtn.disabled = true;
+    } else {
+      totalContainer.innerHTML = `<h2>Total: $${total.toFixed(2)}</h2>`;
+      if (checkoutBtn) checkoutBtn.disabled = false;
+    }
+
     updateCartButton();
   }
 
@@ -239,78 +266,94 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCart();
     // ---------------------------------
-  // CATERING FORM (GOOGLE APPS SCRIPT)
+  // GOOGLE APPS SCRIPT — SHARED ENDPOINT
+  // All forms post to the same script; form_type field tells the sheet which tab to use
   // ---------------------------------
-  const cateringForm = document.getElementById("catering-form");
-  const formStatus = document.getElementById("form-status");
-  const submitBtn = document.getElementById("catering-submit");
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbznd0Fft_iiPx1hm19YI2X2jM3isTMx65aW6mK5ho9uRXCTL6QYiiXJZrDZZuZ-F2Cn_Q/exec";
 
-  // ✅ PASTE YOUR DEPLOYED WEB APP URL HERE
-  const CATERING_ENDPOINT = "https://script.google.com/macros/s/AKfycbznd0Fft_iiPx1hm19YI2X2jM3isTMx65aW6mK5ho9uRXCTL6QYiiXJZrDZZuZ-F2Cn_Q/exec";
-
-  function setStatus(message, type) {
-    if (!formStatus) return;
-
-    formStatus.classList.remove("success", "error", "sending");
-    if (type) formStatus.classList.add(type);
-
-    formStatus.textContent = message;
-    formStatus.classList.add("show");
+  function showStatus(el, message, type) {
+    if (!el) return;
+    el.classList.remove("success", "error", "sending");
+    if (type) el.classList.add(type);
+    el.textContent = message;
+    el.classList.add("show");
   }
 
-  function hideStatusAfter(ms) {
-    if (!formStatus) return;
-    clearTimeout(hideStatusAfter._t);
-    hideStatusAfter._t = setTimeout(() => {
-      formStatus.classList.remove("show", "success", "error", "sending");
+  function autoHideStatus(el, ms) {
+    if (!el) return;
+    clearTimeout(el._hideTimer);
+    el._hideTimer = setTimeout(() => {
+      el.classList.remove("show", "success", "error", "sending");
     }, ms);
   }
 
-  if (cateringForm) {
-    cateringForm.addEventListener("submit", async (e) => {
+  async function handleFormSubmit(form, statusEl, btnEl, defaultBtnText, successMsg) {
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      if (!CATERING_ENDPOINT || CATERING_ENDPOINT.includes("PASTE_")) {
-        setStatus("❌ Missing form endpoint URL in main.js", "error");
-        return;
+      if (btnEl) {
+        btnEl.disabled = true;
+        btnEl.dataset.orig = btnEl.textContent;
+        btnEl.textContent = "Sending...";
       }
 
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.dataset.originalText = submitBtn.textContent;
-        submitBtn.textContent = "Sending...";
-      }
-
-      setStatus("Submitting your request...", "sending");
+      showStatus(statusEl, "Submitting your request...", "sending");
 
       try {
-        const formData = new FormData(cateringForm);
-
-        const response = await fetch(CATERING_ENDPOINT, {
+        const response = await fetch(APPS_SCRIPT_URL, {
           method: "POST",
-          body: formData
+          body: new FormData(form)
         });
 
         const result = await response.json();
 
         if (result.success) {
-          setStatus("✅ Your query has been submitted. We’ll get back to you soon. Thank you!", "success");
-          cateringForm.reset();
-          hideStatusAfter(5000);
+          showStatus(statusEl, successMsg, "success");
+          form.reset();
+          autoHideStatus(statusEl, 6000);
         } else {
-          setStatus("❌ Submission failed. Please try again.", "error");
-          hideStatusAfter(5000);
+          showStatus(statusEl, "❌ Submission failed. Please try again.", "error");
+          autoHideStatus(statusEl, 5000);
         }
       } catch (err) {
-        setStatus("❌ Network error. Please try again.", "error");
-        hideStatusAfter(5000);
+        showStatus(statusEl, "❌ Network error. Please try again.", "error");
+        autoHideStatus(statusEl, 5000);
       } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitBtn.dataset.originalText || "Send Inquiry";
+        if (btnEl) {
+          btnEl.disabled = false;
+          btnEl.textContent = btnEl.dataset.orig || defaultBtnText;
         }
       }
     });
   }
+
+  // Catering form
+  handleFormSubmit(
+    document.getElementById("catering-form"),
+    document.getElementById("form-status"),
+    document.getElementById("catering-submit"),
+    "Send Inquiry",
+    "✅ Your catering inquiry has been submitted. We’ll get back to you soon. Thank you!"
+  );
+
+  // Label quote form
+  handleFormSubmit(
+    document.getElementById("label-form"),
+    document.getElementById("label-status"),
+    document.getElementById("label-submit"),
+    "Request Quote",
+    "✅ Your label quote request has been submitted. We’ll be in touch soon. Thank you!"
+  );
+
+  // Contact form
+  handleFormSubmit(
+    document.getElementById("contact-form"),
+    document.getElementById("contact-status"),
+    document.getElementById("contact-submit"),
+    "Send Message",
+    "✅ Your message has been sent. We’ll get back to you soon. Thank you!"
+  );
 
 });

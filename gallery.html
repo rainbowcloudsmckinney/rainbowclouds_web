@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Gallery | Rainbow Clouds</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand-group">
+      <div class="brand-logo">
+        <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">Rainbow Clouds</div>
+        <div class="small">Joy, Celebration & Sweetness</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+          <div class="nav-image-label">Flavors</div>
+        </div>
+      </a>
+
+      <a href="customize.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/label.png" class="nav-image-icon" alt="Customize">
+          <div class="nav-image-label">Customize</div>
+        </div>
+      </a>
+
+      <a href="catering.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+          <div class="nav-image-label">Catering</div>
+        </div>
+      </a>
+
+      <a href="gallery.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/gallery.png" class="nav-image-icon" alt="Gallery">
+          <div class="nav-image-label">Gallery</div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="nav-image-button">
+        <div class="nav-image-wrapper">
+          <img src="assets/images/contact.png" class="nav-image-icon" alt="Contact">
+          <div class="nav-image-label">Contact</div>
+        </div>
+      </a>
+
+      <a href="cart.html" class="nav-image-button">
+        <div class="nav-image-wrapper cart-wrapper">
+          <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+          <div class="nav-image-label">Cart</div>
+          <span id="cart-count" class="cart-count hidden">0</span>
+        </div>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Image Gallery Slider -->
+  <section class="slider-section">
+    <h2 class="slider-title">Image Gallery</h2>
+    <p class="small slider-sub">Click any image to view it in full — tap the arrows to browse</p>
+    <div class="slider-wrapper">
+      <button type="button" class="slider-btn slider-prev" aria-label="Previous">&#8249;</button>
+      <div class="slider-track-container">
+        <div class="slider-track">
+          <div class="slider-slide"><img src="assets/images/pastsetups/travis.png" alt="Past setup 1"></div>
+          <div class="slider-slide"><img src="assets/images/pastsetups/travis2.png" alt="Past setup 2"></div>
+          <div class="slider-slide"><img src="assets/images/pastsetups/travis3.png" alt="Past setup 3"></div>
+          <div class="slider-slide"><img src="assets/images/pastsetups/travis4.png" alt="Past setup 4"></div>
+          <div class="slider-slide"><img src="assets/images/pastsetups/tarvis5.png" alt="Past setup 5"></div>
+        </div>
+        <div class="slider-dots">
+          <span class="slider-dot active"></span>
+          <span class="slider-dot"></span>
+          <span class="slider-dot"></span>
+          <span class="slider-dot"></span>
+          <span class="slider-dot"></span>
+        </div>
+      </div>
+      <button type="button" class="slider-btn slider-next" aria-label="Next">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- ── Event Photos ── -->
+  <section class="gallery-section">
+    <h2 class="gallery-section-title">Photo Gallery</h2>
+    <p class="small gallery-section-sub">Click any photo to view full size</p>
+
+    <div class="gallery-grid" id="photo-gallery">
+      <div class="gallery-item" data-index="0">
+        <img src="assets/images/pastsetups/travis.png" alt="Rainbow Clouds event setup">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-index="1">
+        <img src="assets/images/pastsetups/travis2.png" alt="Rainbow Clouds event setup">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-index="2">
+        <img src="assets/images/pastsetups/travis3.png" alt="Rainbow Clouds event setup">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-index="3">
+        <img src="assets/images/pastsetups/travis4.png" alt="Rainbow Clouds event setup">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-index="4">
+        <img src="assets/images/pastsetups/tarvis5.png" alt="Rainbow Clouds event setup">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Videos ── -->
+  <section class="gallery-section">
+    <h2 class="gallery-section-title">Videos</h2>
+    <p class="small gallery-section-sub">Watch us spin sweet clouds at live events</p>
+
+    <div class="gallery-video-grid" id="video-gallery">
+      <!-- Add <video> or YouTube embeds here -->
+      <div class="gallery-video-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#b89ec4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10,8 16,12 10,16"/>
+        </svg>
+        <p>Videos coming soon</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button type="button" class="lightbox-close" aria-label="Close">&#10005;</button>
+  <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lightbox-img" src="" alt="Gallery image">
+  </div>
+  <button type="button" class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button>
+  <div class="lightbox-counter"></div>
+</div>
+
+<footer class="footer">
+  <div class="small">Rainbow Clouds - Where Sweet Dreams Come True.</div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+  /* ── Slider ── */
+  (function () {
+    const track   = document.querySelector('.slider-track');
+    const dots    = document.querySelectorAll('.slider-dot');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+    if (!track) return;
+
+    const total = document.querySelectorAll('.slider-slide').length;
+    let current = 0;
+    let timer;
+
+    function goTo(idx) {
+      current = (idx + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function startTimer() {
+      timer = setInterval(() => goTo(current + 1), 4000);
+    }
+
+    prevBtn.addEventListener('click', () => { clearInterval(timer); goTo(current - 1); startTimer(); });
+    nextBtn.addEventListener('click', () => { clearInterval(timer); goTo(current + 1); startTimer(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { clearInterval(timer); goTo(i); startTimer(); }));
+
+    const wrapper = track.closest('.slider-wrapper');
+    wrapper.addEventListener('mouseenter', () => clearInterval(timer));
+    wrapper.addEventListener('mouseleave', startTimer);
+
+    startTimer();
+  })();
+
+  /* ── Lightbox ── */
+  (function () {
+    const items   = Array.from(document.querySelectorAll('.gallery-item'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lightbox-img');
+    const counter  = lightbox.querySelector('.lightbox-counter');
+    const total    = items.length;
+    let current    = 0;
+
+    function openAt(idx) {
+      current = (idx + total) % total;
+      const img = items[current].querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      counter.textContent = `${current + 1} / ${total}`;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    items.forEach((item, i) => item.addEventListener('click', () => openAt(i)));
+
+    lightbox.querySelector('.lightbox-close').addEventListener('click', close);
+    lightbox.querySelector('.lightbox-prev').addEventListener('click', () => openAt(current - 1));
+    lightbox.querySelector('.lightbox-next').addEventListener('click', () => openAt(current + 1));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')     close();
+      if (e.key === 'ArrowLeft')  openAt(current - 1);
+      if (e.key === 'ArrowRight') openAt(current + 1);
+    });
+  })();
+</script>
+</body>
+</html>
