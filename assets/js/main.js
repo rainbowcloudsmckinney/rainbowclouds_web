@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // GOOGLE APPS SCRIPT — SHARED ENDPOINT
   // All forms post to the same script; form_type field tells the sheet which tab to use
   // ---------------------------------
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbznd0Fft_iiPx1hm19YI2X2jM3isTMx65aW6mK5ho9uRXCTL6QYiiXJZrDZZuZ-F2Cn_Q/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEiox1ZgLZ_rmnAlEmKIUt1hJoO0nuxls_wA5zMn4WD1LVKytuSs3XQpAMbnD7pGdFAw/exec";
 
   function showStatus(el, message, type) {
     if (!el) return;
