@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Custom Labels | Rainbow Clouds</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <img src="./assets/images/logo.png" alt="Rainbow Clouds Logo">
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Rainbow Clouds</div>
+          <div class="small">Joy, Celebration & Sweetness</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/flavors.png" class="nav-image-icon" alt="Flavors">
+            <div class="nav-image-label">Flavors</div>
+          </div>
+        </a>
+
+        <a href="customize.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/label.png" class="nav-image-icon" alt="Customize">
+            <div class="nav-image-label">Customize</div>
+          </div>
+        </a>
+
+        <a href="catering.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <img src="assets/images/catering.png" class="nav-image-icon" alt="Catering">
+            <div class="nav-image-label">Catering</div>
+          </div>
+        </a>
+
+        <a href="gallery.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <svg class="nav-image-icon" viewBox="0 0 24 24" fill="none" stroke="#311b92" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21,15 16,10 5,21"/>
+            </svg>
+            <div class="nav-image-label">Gallery</div>
+          </div>
+        </a>
+
+        <a href="contact.html" class="nav-image-button">
+          <div class="nav-image-wrapper">
+            <svg class="nav-image-icon" viewBox="0 0 24 24" fill="none" stroke="#311b92" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline points="2,4 12,13 22,4"/>
+            </svg>
+            <div class="nav-image-label">Contact</div>
+          </div>
+        </a>
+
+        <a href="cart.html" class="nav-image-button">
+          <div class="nav-image-wrapper cart-wrapper">
+            <img src="assets/images/sc.png" class="nav-image-icon" alt="Cart">
+            <div class="nav-image-label">Cart</div>
+            <span id="cart-count" class="cart-count hidden">0</span>
+          </div>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <h2>Custom Labels</h2>
+    <p class="small">Design your own cotton candy label — perfect for parties, weddings & showers.</p>
+
+    <div class="label-grid">
+
+      <!-- ── Form ── -->
+      <div class="form-card">
+        <form id="label-form">
+          <input type="hidden" name="form_type" value="Label Quote Request">
+
+          <label>Your Name
+            <input id="label-name" class="label-input" type="text" name="name" required placeholder="Your name">
+          </label>
+
+          <label>Email
+            <input id="label-email" class="label-input" type="email" name="email" required placeholder="you@example.com">
+          </label>
+
+          <label>Phone Number
+            <input id="label-phone" class="label-input" type="tel" name="phone" required placeholder="(555) 123-4567">
+          </label>
+
+          <label>Label Title <span class="label-field-hint">(main text shown on label)</span>
+            <input id="label-title" class="label-input" type="text" name="label-title" placeholder="e.g. Happy Birthday, Ava!">
+          </label>
+
+          <label>Message <span class="label-field-hint">(optional subtitle)</span>
+            <textarea id="custom-message" name="custom-message" class="label-input" rows="2" placeholder="e.g. Sweet as a Cloud ☁️"></textarea>
+          </label>
+
+          <label>Label Shape
+            <select id="label-shape" name="label-shape" class="label-input">
+              <option value="rectangle" selected>Rectangle</option>
+              <option value="circle">Circle</option>
+              <option value="oval">Oval</option>
+              <option value="cloud">Cloud</option>
+            </select>
+          </label>
+
+          <label>Upload Logo or Image
+            <input id="logo-input" class="label-input" type="file" accept="image/*">
+          </label>
+
+          <label>Font Style
+            <select id="font-style" name="font-style" class="label-input">
+              <option value="Inter, system-ui, sans-serif">Classic</option>
+              <option value="Georgia, serif">Elegant</option>
+              <option value="’Comic Sans MS’, cursive">Playful</option>
+              <option value="’Brush Script MT’, cursive">Script</option>
+            </select>
+          </label>
+
+          <div class="color-row">
+            <label>Background Color
+              <input id="bg-color" name="bg-color" class="label-input" type="color" value="#ffd1dc">
+            </label>
+            <label>Font Color
+              <input id="font-color" name="font-color" class="label-input" type="color" value="#311b92">
+            </label>
+          </div>
+
+          <label>Quantity Needed
+            <input id="quantity-needed" name="quantity-needed" class="label-input" type="number" min="1" value="10">
+          </label>
+
+          <div class="label-form-footer">
+            <button type="submit" class="button" id="label-submit">Request Quote</button>
+            <span class="small">We’ll contact you with a quote.</span>
+            <p id="label-status" class="small" style="margin-top:8px"></p>
+          </div>
+        </form>
+      </div>
+
+      <!-- ── Live Preview ── -->
+      <div class="label-preview-panel">
+        <div class="label-preview-header">
+          <span class="label-preview-title">Live Preview</span>
+          <span class="label-preview-hint">Updates as you type</span>
+        </div>
+        <div id="label-preview" class="preview"></div>
+        <p class="small label-preview-tip">Tip: upload a logo to see it appear on your label.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Hidden SVG for responsive cloud clip-path -->
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
+    <defs>
+      <clipPath id="cloud-clip" clipPathUnits="objectBoundingBox">
+        <path d="M 0.07,0.88 C 0.02,0.88 0.00,0.80 0.04,0.72 C 0.00,0.65 0.02,0.54 0.10,0.50 C 0.10,0.36 0.20,0.26 0.32,0.28 C 0.34,0.16 0.44,0.10 0.50,0.10 C 0.56,0.10 0.66,0.16 0.68,0.28 C 0.80,0.26 0.90,0.36 0.90,0.50 C 0.98,0.54 1.00,0.65 0.96,0.72 C 1.00,0.80 0.98,0.88 0.93,0.88 Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
